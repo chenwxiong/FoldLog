@@ -60,11 +60,11 @@ final class SystemWidgetTests: XCTestCase {
         }
         if springboard.buttons["编辑主屏幕"].exists { XCUIDevice.shared.press(.home) }
         XCTAssertTrue(widget.waitForExistence(timeout: 25), springboard.debugDescription)
-        let sharedRecord = NSPredicate(format: "label CONTAINS %@", "剩余折叠 2 次")
+        let sharedRecord = NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@", "折叠 1 次", "剩余 2 次")
         expectation(for: sharedRecord, evaluatedWith: widget)
         waitForExpectations(timeout: 25)
         XCTAssertLessThan(widget.frame.width, widget.frame.height * 1.4)
-        capture("widget-remaining-home-system")
+        capture("widget-summary-home-system")
         widget.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
         XCTAssertTrue(app.navigationBars["今日"].waitForExistence(timeout: 8))
         XCTAssertEqual(app.staticTexts["hero-count"].label, "1")

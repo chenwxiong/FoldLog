@@ -16,19 +16,21 @@ struct FoldWidgetContent: View {
     let value: WidgetValue
     let family: WidgetFamily
 
+    private var number: String { value.count.map(String.init) ?? "—" }
     private var remaining: String { value.remaining.map(String.init) ?? "—" }
     private var notice: String? {
         if value.count == nil { return "打开折记同步" }
         if value.recordingPaused { return "记录已暂停" }
         if value.needsSync { return "待同步" }
-        if value.limit == nil { return "未设每日上限" }
+        if value.limit == nil { return "未设目标" }
         return nil
     }
 
     private var accessibilitySummary: String {
-        guard value.count != nil else { return "剩余折叠次数暂不可用，请打开折记同步。" }
-        let result = value.remaining.map { "今日剩余折叠 \($0) 次。" } ?? "未设置每日上限。"
-        return "\(value.sourceTitle)，" + result + (notice.map { "\($0)。" } ?? "")
+        guard let count = value.count else { return "折叠记录暂不可用，请打开折记同步。" }
+        let goal = value.remaining.map { "剩余 \($0) 次。" } ?? "未设目标。"
+        let status = value.recordingPaused || value.needsSync ? (notice.map { "\($0)。" } ?? "") : ""
+        return "\(value.sourceTitle)，今日已记录折叠 \(count) 次。" + goal + status
     }
 
     var body: some View {
@@ -47,28 +49,38 @@ struct FoldWidgetContent: View {
     }
 
     private var small: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 5) {
                 Image(systemName: "rectangle.portrait")
                     .foregroundStyle(WidgetPalette.gold).accessibilityHidden(true)
-                Text("剩余折叠").fontWeight(.medium)
+                Text("今日折叠").fontWeight(.medium)
             }
             .font(.caption)
-            Spacer(minLength: 0)
             HStack(alignment: .firstTextBaseline, spacing: 4) {
-                Text(remaining)
-                    .font(.system(size: 50, weight: .semibold, design: .rounded))
+                Text(number)
+                    .font(.system(size: 40, weight: .semibold, design: .rounded))
                     .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
-                    .foregroundStyle(value.remaining == nil ? Color.secondary : WidgetPalette.gold)
-                if value.remaining != nil {
+                if value.count != nil {
                     Text("次").font(.caption).foregroundStyle(WidgetPalette.secondary)
                 }
             }
+            Spacer(minLength: 0)
+            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                Text("剩余").font(.caption)
+                Text(remaining)
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .monospacedDigit().minimumScaleFactor(0.4).lineLimit(1)
+                if value.remaining != nil { Text("次").font(.caption) }
+            }
+            .foregroundStyle(value.remaining == nil ? Color.secondary : WidgetPalette.gold)
+            if value.count != nil && value.limit != nil {
+                ProgressView(value: value.progress)
+                    .tint(WidgetPalette.gold).accessibilityHidden(true)
+            }
             if let notice {
-                Text(notice).font(.caption).foregroundStyle(WidgetPalette.secondary)
+                Text(notice).font(.caption2).foregroundStyle(WidgetPalette.secondary)
                     .lineLimit(1).minimumScaleFactor(0.75)
             }
-            Spacer(minLength: 0)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -76,22 +88,26 @@ struct FoldWidgetContent: View {
     private var inline: some View {
         Label {
             if value.count == nil { Text("打开折记同步") }
-            else if value.remaining == nil { Text("折叠 · 未设目标") }
-            else { Text("折叠剩余 \(remaining) 次") }
+            else { Text("折叠 \(number) · \(value.remaining.map { "余 \($0)" } ?? "未设目标")") }
         } icon: { Image(systemName: "rectangle.portrait") }
     }
 
     private var circular: some View {
         ZStack {
             AccessoryWidgetBackground()
-            VStack(spacing: 1) {
-                Text("剩余").font(.system(size: 9, weight: .medium))
-                Text(remaining).font(.system(size: 22, weight: .semibold, design: .rounded))
+            if value.count != nil && value.limit != nil {
+                Gauge(value: value.progress) { EmptyView() }
+                    .gaugeStyle(.accessoryCircularCapacity).accessibilityHidden(true)
+            }
+            // The independent label can scale long numbers without Gauge truncating them.
+            VStack(spacing: 0) {
+                Text(value.count == nil ? "待同步" : "折叠")
+                    .font(.system(size: 8, weight: .medium))
+                Text(number).font(.system(size: 19, weight: .semibold, design: .rounded))
                     .monospacedDigit().lineLimit(1).minimumScaleFactor(0.4)
-                if let notice {
-                    Text(notice).font(.system(size: 8))
-                        .lineLimit(1).minimumScaleFactor(0.65)
-                }
+                Text(value.remaining.map { "余 \($0)" } ?? (value.count == nil ? "打开折记" : "未设目标"))
+                    .font(.system(size: 9, weight: .medium))
+                    .lineLimit(1).minimumScaleFactor(0.6)
             }
             .frame(width: 44, height: 44)
         }

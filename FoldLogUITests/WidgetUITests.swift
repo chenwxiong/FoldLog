@@ -24,7 +24,7 @@ final class WidgetUITests: XCTestCase {
         openGallery()
         let countPreview = app.otherElements["widget-summary-small-preview"]
         XCTAssertTrue(countPreview.waitForExistence(timeout: 4))
-        XCTAssertTrue(countPreview.label.contains("剩余折叠 2 次"), countPreview.label)
+        XCTAssertTrue(countPreview.label.contains("剩余 2 次"), countPreview.label)
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "小组件暂未同步")).firstMatch.exists)
         capture("widget-shared-after-save")
         app.segmentedControls.buttons["示例效果"].tap()
@@ -88,7 +88,7 @@ final class WidgetUITests: XCTestCase {
         capture("widget-minimal-lock-dark")
     }
 
-    @MainActor func testRemainingWidgetStates() {
+    @MainActor func testCompactSummaryWidgetStates() {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["--ui-testing"]
@@ -97,27 +97,29 @@ final class WidgetUITests: XCTestCase {
         app.segmentedControls.buttons["示例效果"].tap()
         let preview = app.otherElements["widget-summary-small-preview"]
         XCTAssertTrue(preview.waitForExistence(timeout: 4))
-        XCTAssertTrue(preview.label.contains("剩余折叠 36 次"), preview.label)
+        XCTAssertTrue(preview.label.contains("折叠 24 次"), preview.label)
+        XCTAssertTrue(preview.label.contains("剩余 36 次"), preview.label)
         XCTAssertFalse(app.otherElements["widget-remaining-small-preview"].exists)
-        capture("widget-remaining-light")
+        capture("widget-summary-light")
 
         let states: [(String, [String], String)] = [
-            ("未设目标", ["未设置每日上限"], "unset"),
-            ("达到上限", ["剩余折叠 0 次"], "reached"),
-            ("超出上限", ["剩余折叠 0 次"], "exceeded"),
-            ("大数字", ["剩余折叠 876543 次"], "large"),
-            ("待同步", ["次数暂不可用"], "unavailable")
+            ("未设目标", ["折叠 24 次", "未设目标"], "unset"),
+            ("达到上限", ["折叠 60 次", "剩余 0 次"], "reached"),
+            ("超出上限", ["折叠 63 次", "剩余 0 次"], "exceeded"),
+            ("大数字", ["折叠 123456 次", "剩余 876543 次"], "large"),
+            ("待同步", ["记录暂不可用"], "unavailable")
         ]
         for (title, labels, name) in states {
             app.buttons["widget-preview-state"].tap()
             app.buttons[title].tap()
             for label in labels { XCTAssertTrue(preview.label.contains(label), preview.label) }
-            capture("widget-remaining-\(name)")
+            capture("widget-summary-\(name)")
             if name == "large" {
                 scrollGallery()
                 let circular = app.otherElements["widget-summary-circular-preview"]
-                XCTAssertTrue(circular.label.contains("剩余折叠 876543 次"), circular.label)
-                capture("widget-remaining-lock-large")
+                XCTAssertTrue(circular.label.contains("折叠 123456 次"), circular.label)
+                XCTAssertTrue(circular.label.contains("剩余 876543 次"), circular.label)
+                capture("widget-summary-lock-large")
                 app.scrollViews["widget-gallery-scroll"].swipeDown()
             }
         }
@@ -126,17 +128,17 @@ final class WidgetUITests: XCTestCase {
         scrollGallery()
         let circular = app.otherElements["widget-summary-circular-preview"]
         XCTAssertTrue(circular.exists)
-        XCTAssertTrue(circular.label.contains("剩余折叠 36 次"), circular.label)
-        capture("widget-remaining-lock-light")
+        XCTAssertTrue(circular.label.contains("剩余 36 次"), circular.label)
+        capture("widget-summary-lock-light")
 
         app.terminate()
         app.launchArguments = ["--ui-testing", "--dark"]
         app.launch()
         openGallery()
         app.segmentedControls.buttons["示例效果"].tap()
-        capture("widget-remaining-dark")
+        capture("widget-summary-dark")
         scrollGallery()
-        capture("widget-remaining-lock-dark")
+        capture("widget-summary-lock-dark")
     }
 
     @MainActor private func openGallery() {

@@ -30,7 +30,7 @@ struct WidgetGalleryView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("抬眼，心中有数。")
                             .font(.title2.weight(.semibold))
-                        Text("只看剩余次数，一眼就清楚。")
+                        Text("今日折叠与剩余次数，一眼就清楚。")
                             .foregroundStyle(.secondary)
                     }
                     Picker("预览数据", selection: $showExample) {
@@ -68,10 +68,10 @@ struct WidgetGalleryView: View {
 
                     VStack(alignment: .leading, spacing: 12) {
                         Text("添加到桌面").font(.headline)
-                        Text("长按桌面空白处 → 编辑 → 添加小组件 → 搜索“折记” → 选择“剩余折叠”。")
+                        Text("长按桌面空白处 → 编辑 → 添加小组件 → 搜索“折记” → 选择“今日折叠”。")
                         Text("添加到锁屏").font(.headline)
                         Text("长按锁屏 → 自定 → 锁定屏幕 → 点按时间上方或下方的小组件区域 → 选择“折记”。")
-                        Text("轻点小组件打开今日，在 App 中调整每日上限。达到上限后剩余为 0，记录继续累加。")
+                        Text("轻点小组件打开今日，在 App 中调整每日上限。进度条表示今日已使用的比例；剩余为 0 后仍继续计数。")
                     }
                     .font(.subheadline)
                     VStack(alignment: .leading, spacing: 10) {

@@ -68,3 +68,12 @@ artifacts/*
 !artifacts/duo-widget-remaining-lock-light.png
 !artifacts/duo-widget-remaining-lock-dark.png
 !artifacts/duo-widget-remaining-lock-large.png
+!artifacts/widget-summary-light.png
+!artifacts/widget-summary-dark.png
+!artifacts/widget-summary-large.png
+!artifacts/widget-summary-unset.png
+!artifacts/widget-summary-home-system.png
+!artifacts/widget-summary-card-light.png
+!artifacts/duo-widget-summary-lock-light.png
+!artifacts/duo-widget-summary-lock-dark.png
+!artifacts/duo-widget-summary-lock-large.png

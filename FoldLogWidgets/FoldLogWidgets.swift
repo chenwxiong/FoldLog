@@ -51,8 +51,8 @@ struct FoldCountWidget: Widget {
         StaticConfiguration(kind: kind, provider: FoldProvider()) { entry in
             FoldEntryView(entry: entry)
         }
-        .configurationDisplayName("剩余折叠")
-        .description("简洁查看今日剩余折叠次数。轻点打开今日记录。")
+        .configurationDisplayName("今日折叠")
+        .description("同时查看今日折叠与剩余次数。轻点打开今日记录。")
         .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryInline])
     }
 }
@@ -64,9 +64,9 @@ struct FoldLogWidgetBundle: WidgetBundle {
     }
 }
 
-#Preview("剩余折叠", as: .systemSmall) { FoldCountWidget() } timeline: {
+#Preview("今日折叠", as: .systemSmall) { FoldCountWidget() } timeline: {
     FoldEntry(date: .now, value: .preview)
 }
-#Preview("锁屏剩余", as: .accessoryCircular) { FoldCountWidget() } timeline: {
+#Preview("锁屏今日与剩余", as: .accessoryCircular) { FoldCountWidget() } timeline: {
     FoldEntry(date: .now, value: .preview)
 }
