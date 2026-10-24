@@ -1,0 +1,33 @@
+{
+  "fill": {
+    "automatic-gradient": "extended-srgb:0.055,0.06,0.073,1.0"
+  },
+  "groups": [
+    {
+      "name": "Folded ribbon",
+      "lighting": "individual",
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.35
+      },
+      "specular": true,
+      "translucency": {
+        "enabled": true,
+        "value": 0.14
+      },
+      "layers": [
+        {
+          "image-name": "02-pearl-front.svg",
+          "name": "Pearl front"
+        },
+        {
+          "image-name": "01-gold-reverse.svg",
+          "name": "Gold reverse"
+        }
+      ]
+    }
+  ],
+  "supported-platforms": {
+    "squares": "shared"
+  }
+}

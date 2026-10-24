@@ -1,0 +1,131 @@
+import XCTest
+
+final class WidgetUITests: XCTestCase {
+    @MainActor private var app: XCUIApplication!
+
+    @MainActor func testWidgetGallerySharingAndDeepLinks() {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launchArguments = ["--ui-testing", "--reset-data", "--widget-integration-testing"]
+        app.launch()
+        app.launchArguments = ["--ui-testing", "--widget-integration-testing"]
+        app.buttons["simulate-fullyOpen"].tap()
+        app.buttons["simulate-closed"].tap()
+        app.open(URL(string: "foldlog://goal/closed")!)
+        let toggle = app.switches["goal-enabled"]
+        XCTAssertTrue(toggle.waitForExistence(timeout: 5))
+        toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+        let input = app.textFields["goal-limit"]
+        input.tap()
+        input.typeText("3")
+        if app.buttons["完成"].isHittable { app.buttons["完成"].tap() }
+        app.buttons["save-goal"].tap()
+        openGallery()
+        let countPreview = app.otherElements["widget-count-small-preview"]
+        XCTAssertTrue(countPreview.waitForExistence(timeout: 4))
+        XCTAssertTrue(countPreview.label.contains("剩余 2 次"), countPreview.label)
+        XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "小组件暂未同步")).firstMatch.exists)
+        capture("widget-shared-after-save")
+        app.segmentedControls.buttons["示例效果"].tap()
+        capture("widget-gallery-light")
+        scrollGallery()
+        capture("widget-lock-styles")
+
+        app.open(URL(string: "foldlog://today")!)
+        XCTAssertTrue(app.buttons["simulate-closed"].waitForExistence(timeout: 4))
+        XCTAssertEqual(app.staticTexts["hero-count"].label, "1")
+        app.buttons["设置"].tap()
+        category("recording")
+        app.buttons["input-mode"].tap()
+        app.buttons["设备记录"].tap()
+        capture("widget-shared-device-source")
+        app.buttons["input-mode"].tap()
+        app.buttons["演示模式"].tap()
+        category("data")
+        reveal(app.buttons["clear-records"])
+        app.buttons["clear-records"].tap()
+        app.buttons["清空数据"].tap()
+        capture("widget-shared-cleared")
+
+        app.terminate()
+        app.launchArguments = ["--ui-testing", "--dark"]
+        app.launch()
+        openGallery()
+        app.segmentedControls.buttons["示例效果"].tap()
+        capture("widget-gallery-dark")
+    }
+
+    @MainActor func testWidgetGalleryWithLargestText() {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launchArguments = ["--ui-testing", "--large-text"]
+        app.launch()
+        openGallery()
+        XCTAssertTrue(app.segmentedControls.buttons["当前记录"].exists)
+        capture("widget-gallery-largest-text")
+        scrollGallery()
+        capture("widget-gallery-largest-text-scrolled")
+    }
+
+    @MainActor func testWidgetStylesInLightAndDark() {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launchArguments = ["--ui-testing"]
+        app.launch()
+        openGallery()
+        app.segmentedControls.buttons["示例效果"].tap()
+        capture("widget-minimal-light")
+        scrollGallery()
+        capture("widget-minimal-lock-light")
+        app.terminate()
+        app.launchArguments = ["--ui-testing", "--dark"]
+        app.launch()
+        openGallery()
+        app.segmentedControls.buttons["示例效果"].tap()
+        capture("widget-minimal-dark")
+        scrollGallery()
+        capture("widget-minimal-lock-dark")
+    }
+
+    @MainActor private func openGallery() {
+        app.buttons["设置"].tap()
+        category("widgets")
+        let link = app.buttons["widget-gallery"]
+        reveal(link)
+        XCTAssertTrue(link.waitForExistence(timeout: 5))
+        link.tap()
+    }
+
+    @MainActor private func reveal(_ element: XCUIElement) {
+        for _ in 0..<10 {
+            if element.isHittable { break }
+            let form = app.descendants(matching: .any)["settings-detail-all"].firstMatch
+            if form.exists {
+                form.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.7))
+                    .press(forDuration: 0.05, thenDragTo: form.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.3)))
+            } else { app.swipeUp() }
+        }
+    }
+
+    @MainActor private func category(_ value: String) {
+        let row = app.descendants(matching: .any)["settings-category-\(value)"].firstMatch
+        if row.waitForExistence(timeout: 1) { row.tap() }
+    }
+
+    @MainActor private func scrollGallery() {
+        let scroll = app.scrollViews["widget-gallery-scroll"]
+        scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.7, dy: 0.75))
+            .press(forDuration: 0.05,
+                   thenDragTo: scroll.coordinate(withNormalizedOffset: CGVector(dx: 0.7, dy: 0.35)),
+                   withVelocity: .slow, thenHoldForDuration: 0.2)
+    }
+
+    @MainActor private func capture(_ name: String) {
+        FileHandle.standardOutput.write(Data("FOLDLOG_SCREENSHOT: \(name)\n".utf8))
+        Thread.sleep(forTimeInterval: 1)
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+}

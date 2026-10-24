@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs>
+ <linearGradient id="page" x1="330" y1="260" x2="695" y2="773" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fffefa"/><stop offset=".4" stop-color="#faf7f0"/>
+  <stop offset=".74" stop-color="#e9e4d9"/><stop offset="1" stop-color="#d1c9b9"/>
+ </linearGradient>
+ <linearGradient id="gold" x1="268" y1="550" x2="754" y2="780" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#f7e2ae"/><stop offset=".5" stop-color="#d9ba80"/>
+  <stop offset="1" stop-color="#a7844e"/>
+ </linearGradient>
+ <linearGradient id="ink" x1="320" y1="380" x2="700" y2="680" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#766652"/><stop offset=".55" stop-color="#635441"/>
+  <stop offset="1" stop-color="#504434"/>
+ </linearGradient>
+</defs><path d="M255 247 C326 265 429 319 486 337 C502 342 522 342 538 337
+ C595 319 698 265 769 247 C790 242 808 256 808 281
+ L808 624 C808 659 789 685 762 698 C694 727 595 772 539 797
+ C522 805 502 805 485 797 C429 772 330 727 262 698
+ C235 685 216 659 216 624 L216 281 C216 256 234 242 255 247 Z" transform="translate(0 12)" fill="url(#gold)"/></svg>

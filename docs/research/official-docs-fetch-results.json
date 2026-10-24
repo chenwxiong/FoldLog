@@ -1,0 +1,767 @@
+[
+  {
+    "key": "uihinge",
+    "url": "https://developer.apple.com/tutorials/data/documentation/uikit/uihinge.json",
+    "title": "UIHinge",
+    "platforms": [
+      {
+        "introducedAt": "27.1",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "visionOS"
+      }
+    ],
+    "declarations": [
+      "@MainActor class UIHinge"
+    ],
+    "text": "An object encapsulating the state of a single hinge. You observe hinge state by adding a   to a view and reading it from the update delivered to its handler. In the example above, the current angle and status of the hinge are displayed as the user interacts with the hinge.",
+    "topics": [
+      {
+        "anchor": "Getting-the-hinge-state",
+        "identifiers": [
+          "doc://com.apple.uikit/documentation/UIKit/UIHinge/angle",
+          "doc://com.apple.uikit/documentation/UIKit/UIHinge/status-swift.property",
+          "doc://com.apple.uikit/documentation/UIKit/UIHinge/Status-swift.enum"
+        ],
+        "title": "Getting the hinge state"
+      }
+    ],
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "An object encapsulating the state of a single hinge.",
+            "type": "text"
+          }
+        ],
+        "title": "UIHinge",
+        "url": "/documentation/uikit/uihinge"
+      },
+      {
+        "abstract": [
+          {
+            "text": "The status of an individual hinge",
+            "type": "text"
+          }
+        ],
+        "title": "UIHinge.Status",
+        "url": "/documentation/uikit/uihinge/status-swift.enum"
+      },
+      {
+        "abstract": [
+          {
+            "text": "An interaction for observing the hinge state associated with the view’s hierarchy.",
+            "type": "text"
+          }
+        ],
+        "title": "UIHingeInteraction",
+        "url": "/documentation/uikit/uihingeinteraction"
+      }
+    ]
+  },
+  {
+    "key": "uihingeinteraction",
+    "url": "https://developer.apple.com/tutorials/data/documentation/uikit/uihingeinteraction.json",
+    "title": "UIHingeInteraction",
+    "platforms": [
+      {
+        "introducedAt": "27.1",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "visionOS"
+      }
+    ],
+    "declarations": [
+      "@MainActor class UIHingeInteraction"
+    ],
+    "text": "An interaction for observing the hinge state associated with the view’s hierarchy. Add a   to a view to receive hinge state updates. The interaction’s handler is called when the hinge state changes, or when the interaction   moves between hierarchies. When the interaction moves out of a hierarchy that provides hinge updates, the update’s   is nil. In the example above, the current angle and status of the hinge are displayed as the user interacts with the hinge.",
+    "topics": [
+      {
+        "anchor": "Creating-a-hinge-interaction",
+        "identifiers": [
+          "doc://com.apple.uikit/documentation/UIKit/UIHingeInteraction/init(updateHandler:)"
+        ],
+        "title": "Creating a hinge interaction"
+      },
+      {
+        "anchor": "Configuring-the-interaction",
+        "identifiers": [
+          "doc://com.apple.uikit/documentation/UIKit/UIHingeInteraction/isEnabled"
+        ],
+        "title": "Configuring the interaction"
+      },
+      {
+        "anchor": "Getting-hinge-updates",
+        "identifiers": [
+          "doc://com.apple.uikit/documentation/UIKit/UIHingeInteraction/Update"
+        ],
+        "title": "Getting hinge updates"
+      }
+    ],
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "An object encapsulating the state of a single hinge.",
+            "type": "text"
+          }
+        ],
+        "title": "UIHinge",
+        "url": "/documentation/uikit/uihinge"
+      },
+      {
+        "abstract": [
+          {
+            "text": "An interaction for observing the hinge state associated with the view’s hierarchy.",
+            "type": "text"
+          }
+        ],
+        "title": "UIHingeInteraction",
+        "url": "/documentation/uikit/uihingeinteraction"
+      },
+      {
+        "abstract": [
+          {
+            "text": "An update for a ",
+            "type": "text"
+          },
+          {
+            "code": "UIHingeInteraction",
+            "type": "codeVoice"
+          }
+        ],
+        "title": "UIHingeInteraction.Update",
+        "url": "/documentation/uikit/uihingeinteraction/update"
+      }
+    ]
+  },
+  {
+    "key": "devicehinge",
+    "url": "https://developer.apple.com/tutorials/data/documentation/swiftui/devicehinge.json",
+    "title": "DeviceHinge",
+    "platforms": [
+      {
+        "introducedAt": "27.1",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "macOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "visionOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "watchOS"
+      }
+    ],
+    "declarations": [
+      "struct DeviceHinge"
+    ],
+    "text": "A type encapsulating the state of a single hinge. A hinge provides its angle along with a status determined by the   system based on the current angle and device orientation. You use this type   with the   modifier. In the example above, the current angle and status of the hinge   will be displayed in the app as you interact with the hinge.",
+    "topics": [
+      {
+        "anchor": "Getting-hinge-information",
+        "identifiers": [
+          "doc://com.apple.SwiftUI/documentation/SwiftUI/DeviceHinge/angle",
+          "doc://com.apple.SwiftUI/documentation/SwiftUI/DeviceHinge/status-swift.property",
+          "doc://com.apple.SwiftUI/documentation/SwiftUI/DeviceHinge/Status-swift.struct"
+        ],
+        "title": "Getting hinge information"
+      }
+    ],
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "A type encapsulating the state of a single hinge.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHinge",
+        "url": "/documentation/swiftui/devicehinge"
+      },
+      {
+        "abstract": [
+          {
+            "text": "The status of an individual hinge.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHinge.Status",
+        "url": "/documentation/swiftui/devicehinge/status-swift.struct"
+      },
+      {
+        "abstract": [
+          {
+            "text": "A type describing the context of hinges on the device.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHingeContext",
+        "url": "/documentation/swiftui/devicehingecontext"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Adds an action to perform when the hinge context of the",
+            "type": "text"
+          },
+          {
+            "text": " ",
+            "type": "text"
+          },
+          {
+            "text": "view hierarchy changes.",
+            "type": "text"
+          }
+        ],
+        "title": "onHingeChange(isEnabled:_:)",
+        "url": "/documentation/swiftui/view/onhingechange(isenabled:_:)"
+      }
+    ]
+  },
+  {
+    "key": "devicehingecontext",
+    "url": "https://developer.apple.com/tutorials/data/documentation/swiftui/devicehingecontext.json",
+    "title": "DeviceHingeContext",
+    "platforms": [
+      {
+        "introducedAt": "27.1",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "macOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "visionOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "watchOS"
+      }
+    ],
+    "declarations": [
+      "struct DeviceHingeContext"
+    ],
+    "text": "A type describing the context of hinges on the device. You use this type with the    view modifier.",
+    "topics": [
+      {
+        "anchor": "Getting-hinge-context-information",
+        "identifiers": [
+          "doc://com.apple.SwiftUI/documentation/SwiftUI/DeviceHingeContext/hinge"
+        ],
+        "title": "Getting hinge context information"
+      }
+    ],
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "A type encapsulating the state of a single hinge.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHinge",
+        "url": "/documentation/swiftui/devicehinge"
+      },
+      {
+        "abstract": [
+          {
+            "text": "A type describing the context of hinges on the device.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHingeContext",
+        "url": "/documentation/swiftui/devicehingecontext"
+      },
+      {
+        "abstract": [
+          {
+            "text": "The current hinge of the device.",
+            "type": "text"
+          }
+        ],
+        "title": "hinge",
+        "url": "/documentation/swiftui/devicehingecontext/hinge"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Adds an action to perform when the hinge context of the",
+            "type": "text"
+          },
+          {
+            "text": " ",
+            "type": "text"
+          },
+          {
+            "text": "view hierarchy changes.",
+            "type": "text"
+          }
+        ],
+        "title": "onHingeChange(isEnabled:_:)",
+        "url": "/documentation/swiftui/view/onhingechange(isenabled:_:)"
+      }
+    ]
+  },
+  {
+    "key": "onhingechange",
+    "url": "https://developer.apple.com/tutorials/data/documentation/swiftui/view/onhingechange(isenabled:_:).json",
+    "title": "onHingeChange(isEnabled:_:)",
+    "platforms": [
+      {
+        "introducedAt": "27.1",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "macOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "visionOS"
+      },
+      {
+        "introducedAt": "27.1",
+        "name": "watchOS"
+      }
+    ],
+    "declarations": [
+      "nonisolated func onHingeChange(isEnabled: Bool = true, _ action: @escaping (DeviceHingeContext, DeviceHingeContext) -> Void) -> some View\n"
+    ],
+    "text": "Adds an action to perform when the hinge context of the   view hierarchy changes. Use this modifier to be informed of changes to the hinge   context of the device. In the example above, the current angle and status of the hinge   will be displayed in the app as you interact with the hinge.",
+    "topics": null,
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "A type encapsulating the state of a single hinge.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHinge",
+        "url": "/documentation/swiftui/devicehinge"
+      },
+      {
+        "abstract": [
+          {
+            "text": "A type describing the context of hinges on the device.",
+            "type": "text"
+          }
+        ],
+        "title": "DeviceHingeContext",
+        "url": "/documentation/swiftui/devicehingecontext"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Adds an action to perform when the hinge context of the",
+            "type": "text"
+          },
+          {
+            "text": " ",
+            "type": "text"
+          },
+          {
+            "text": "view hierarchy changes.",
+            "type": "text"
+          }
+        ],
+        "title": "onHingeChange(isEnabled:_:)",
+        "url": "/documentation/swiftui/view/onhingechange(isenabled:_:)"
+      }
+    ]
+  },
+  {
+    "key": "backgroundtasks",
+    "url": "https://developer.apple.com/tutorials/data/documentation/backgroundtasks.json",
+    "title": "Background Tasks",
+    "platforms": [
+      {
+        "introducedAt": "13.0",
+        "name": "iOS"
+      },
+      {
+        "introducedAt": "13.0",
+        "name": "iPadOS"
+      },
+      {
+        "introducedAt": "13.1",
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "13.0",
+        "name": "tvOS"
+      },
+      {
+        "introducedAt": "1.0",
+        "name": "visionOS"
+      }
+    ],
+    "declarations": [],
+    "text": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks. Use this framework to keep your app content up to date and run tasks requiring minutes to complete even if your app is in the background. Longer tasks can leverage external power, network connectivity, and the GPU on supported devices. To launch your app in the background and perform necessary work, register launch handlers for framework-provided tasks and schedule the tasks as needed. Your app can also use a framework-provided task to execute critical jobs in the foreground and complete them in the background if a person backgrounds your app before the job completes.",
+    "topics": [
+      {
+        "anchor": "Essentials",
+        "identifiers": [
+          "doc://com.apple.documentation/documentation/Updates/BackgroundTasks",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGTaskScheduler",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGTask"
+        ],
+        "title": "Essentials"
+      },
+      {
+        "anchor": "Background-tasks",
+        "identifiers": [
+          "doc://com.apple.documentation/documentation/UIKit/using-background-tasks-to-update-your-app",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/refreshing-and-maintaining-your-app-using-background-tasks",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/choosing-background-strategies-for-your-app",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGProcessingTask",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGAppRefreshTask",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGHealthResearchTask"
+        ],
+        "title": "Background tasks"
+      },
+      {
+        "anchor": "Foreground-tasks-with-background-support",
+        "identifiers": [
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/performing-long-running-tasks-on-ios-and-ipados",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGContinuedProcessingTask",
+          "doc://com.apple.documentation/documentation/BundleResources/Entitlements/com.apple.developer.background-tasks.continued-processing.gpu"
+        ],
+        "title": "Foreground tasks with background support"
+      },
+      {
+        "anchor": "Task-requests",
+        "identifiers": [
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGProcessingTaskRequest",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGAppRefreshTaskRequest",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGTaskRequest",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGHealthResearchTaskRequest",
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/BGContinuedProcessingTaskRequest"
+        ],
+        "title": "Task requests"
+      },
+      {
+        "anchor": "Development-and-testing",
+        "identifiers": [
+          "doc://com.apple.backgroundtasks/documentation/BackgroundTasks/starting-and-terminating-tasks-during-development"
+        ],
+        "title": "Development and testing"
+      }
+    ],
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks.",
+            "type": "text"
+          }
+        ],
+        "title": "Background Tasks",
+        "url": "/documentation/backgroundtasks"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Select the best method of scheduling background runtime for your app.",
+            "type": "text"
+          }
+        ],
+        "title": "Choosing Background Strategies for Your App",
+        "url": "/documentation/backgroundtasks/choosing-background-strategies-for-your-app"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Use scheduled background tasks for refreshing your app content and for performing maintenance.",
+            "type": "text"
+          }
+        ],
+        "title": "Refreshing and Maintaining Your App Using Background Tasks",
+        "url": "/documentation/backgroundtasks/refreshing-and-maintaining-your-app-using-background-tasks"
+      },
+      {
+        "abstract": [
+          {
+            "text": "The entitlement the system requires for a continuous background task to use the GPU.",
+            "type": "text"
+          }
+        ],
+        "title": "Background GPU Access",
+        "url": "/documentation/bundleresources/entitlements/com.apple.developer.background-tasks.continued-processing.gpu"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Configure your app to perform tasks in the background to make efficient use of processing time and power.",
+            "type": "text"
+          }
+        ],
+        "title": "Using background tasks to update your app",
+        "url": "/documentation/uikit/using-background-tasks-to-update-your-app"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Learn about important changes in Background Tasks.",
+            "type": "text"
+          }
+        ],
+        "title": "Background Tasks updates",
+        "url": "/documentation/updates/backgroundtasks"
+      }
+    ]
+  },
+  {
+    "key": "background-strategies",
+    "url": "https://developer.apple.com/tutorials/data/documentation/backgroundtasks/choosing-background-strategies-for-your-app.json",
+    "title": "Choosing Background Strategies for Your App",
+    "platforms": null,
+    "declarations": [],
+    "text": "Select the best method of scheduling background runtime for your app. If your app needs computing resources to complete tasks when it’s not running in the foreground, you can select from many strategies to obtain background runtime. Selecting the right strategies for your app depends on how it functions in the background. Some apps perform work for a short time while in the foreground and must continue uninterrupted if they go to the background. Other apps defer that work to perform in the background at a later time or even at night while the device charges. Some apps need background processing time at varied and unpredictable times, such as when an external event or message arrives. Apps involved in health research studies can obtain background runtime to process data essential for the study. Apps can also request to launch in the background for studies in which the user participates. Select one or more methods for your app based on how you schedule activity in the background. The system may place apps in the background at any time. If your app performs critical work that must continue while it runs in the background, use   to alert the system. Consider this approach if your app needs to finish sending a message or complete saving a file. The system grants your app a limited amount of time to perform its work once it enters the background. Don’t exceed this time, and use the expiration handler to cover the case where the time has depleted to cancel or defer the work. Once your work completes, call   before the time limit expires so that your app suspends properly. The system terminates your app if you fail to call this method. If the task is one that takes some time, such as downloading or uploading files, use  . See   for more information. To preserve battery life and performance, you can schedule backgrounds tasks for periods of low activity, such as overnight when the device charges. Use this approach when your app manages heavy workloads, such as training machine learning models or performing database maintenance. Schedule these types of background tasks using  , and the system decides the best time to launch your background task. Apps involved in health research studies can have time-consuming tasks essential for the study and might need to complete processing the background. Schedule these types of background tasks using  . Your app may require short bursts of background time to perform content refresh or other work; for example, your app may fetch content from the server periodically, or regularly update its internal state. In this situation, use   by requesting  . Your app can use   to launch in the background and process data for a health research study in which the user participates. The system decides the best time to launch your background task, and provides your app up to 30 seconds of background runtime. Complete your work within this time period and call  , or the system terminates your app. See   for more information. Background pushes silently wake your app in the background. They don’t display an alert, play a sound, or badge your app’s icon. If your app obtains content from a server infrequently or at irregular intervals, use background pushes to notify your app when new content becomes available. A messaging app with a muted conversation might use a background push solution, and so might an email app that processes incoming mail without alerting the user. When sending a background push, set  : to   without  ,  , or  . The system decides when to launch the app to download the content. To ensure your app launches, set  to  , and   to  . Once the system delivers the remote notification with  , your app has up to 30 seconds to complete its work. After your app performs the work, call the passed completion handler as soon as possible to conserve power. If you send background pushes more frequently than three times per hour, the system imposes rate limitations. See   for more information. If your app needs to perform a task in the background and show a notification to the user, use a Notification Service Extension. For example, an email app might need to notify a user after downloading a new email. Subclass   and bundle the system extension with your app. Upon receiving a push notification, your service extension wakes up and obtains background runtime through  . When your extension completes its work, it must call the content handler with the content you want to deliver to the user. Your extension has a limited amount of time to modify the content and execute the   block.",
+    "topics": null,
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks.",
+            "type": "text"
+          }
+        ],
+        "title": "Background Tasks",
+        "url": "/documentation/backgroundtasks"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Use scheduled background tasks for refreshing your app content and for performing maintenance.",
+            "type": "text"
+          }
+        ],
+        "title": "Refreshing and Maintaining Your App Using Background Tasks",
+        "url": "/documentation/backgroundtasks/refreshing-and-maintaining-your-app-using-background-tasks"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks.",
+            "type": "text"
+          }
+        ],
+        "title": "Background Tasks",
+        "url": "/documentation/backgroundtasks"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Create tasks that download files while your app is inactive.",
+            "type": "text"
+          }
+        ],
+        "title": "Downloading files in the background",
+        "url": "/documentation/foundation/downloading-files-in-the-background"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Marks the start of a task with a custom name that should continue if the app enters the background.",
+            "type": "text"
+          }
+        ],
+        "title": "beginBackgroundTask(withName:expirationHandler:)",
+        "url": "/documentation/uikit/uiapplication/beginbackgroundtask(withname:expirationhandler:)"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Marks the end of a specific long-running background task.",
+            "type": "text"
+          }
+        ],
+        "title": "endBackgroundTask(_:)",
+        "url": "/documentation/uikit/uiapplication/endbackgroundtask(_:)"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Configure your app to perform tasks in the background to make efficient use of processing time and power.",
+            "type": "text"
+          }
+        ],
+        "title": "Using background tasks to update your app",
+        "url": "/documentation/uikit/using-background-tasks-to-update-your-app"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Deliver notifications that wake your app and update it in the background.",
+            "type": "text"
+          }
+        ],
+        "title": "Pushing background updates to your App",
+        "url": "/documentation/usernotifications/pushing-background-updates-to-your-app"
+      }
+    ]
+  },
+  {
+    "key": "background-execution",
+    "url": "https://developer.apple.com/tutorials/data/documentation/uikit/extending-your-app-s-background-execution-time.json",
+    "title": "Extending your app’s background execution time",
+    "platforms": null,
+    "declarations": [],
+    "text": "Ensure that critical tasks finish when your app moves to the background. Extending your app’s background execution time ensures that you have adequate time to perform critical tasks. For tasks that require more background time, use  . When your app moves to the background, the system calls your app delegate’s   method. That method has five seconds to perform any tasks and return. Shortly after that method returns, the system puts your app into the suspended state. For most apps, five seconds is enough to perform any crucial tasks, but if you need more time, you can ask UIKit to extend your app’s runtime. You extend your app’s runtime by calling the   method. Calling this method gives you extra time to perform important tasks. (You can find out the maximum background time available using the   property.) When you finish your tasks, call the   method right away to let the system know that you’re done. If you don’t end your tasks in a timely manner, the system terminates your app.    Don’t wait until your app moves to the background to call the   method. Call the method before performing any long-running task. The following code shows an example that configures a background task so that the app may save data to its server, which could take longer than five seconds. The   method returns an identifier that you must save and pass to the   method.    The   method can’t be called from an app extension. To request extra execution time from your app extension, call the   method of   instead.",
+    "topics": null,
+    "relevant_refs": [
+      {
+        "abstract": [
+          {
+            "text": "Support background processing in your app by wrapping your app’s most critical work in framework-provided tasks.",
+            "type": "text"
+          }
+        ],
+        "title": "Background Tasks",
+        "url": "/documentation/backgroundtasks"
+      },
+      {
+        "abstract": [
+          {
+            "text": "The maximum amount of time remaining for the app to run in the background.",
+            "type": "text"
+          }
+        ],
+        "title": "backgroundTimeRemaining",
+        "url": "/documentation/uikit/uiapplication/backgroundtimeremaining"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Marks the start of a task with a custom name that should continue if the app enters the background.",
+            "type": "text"
+          }
+        ],
+        "title": "beginBackgroundTask(withName:expirationHandler:)",
+        "url": "/documentation/uikit/uiapplication/beginbackgroundtask(withname:expirationhandler:)"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Marks the end of a specific long-running background task.",
+            "type": "text"
+          }
+        ],
+        "title": "endBackgroundTask(_:)",
+        "url": "/documentation/uikit/uiapplication/endbackgroundtask(_:)"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Tells the delegate that the app is now in the background.",
+            "type": "text"
+          }
+        ],
+        "title": "applicationDidEnterBackground(_:)",
+        "url": "/documentation/uikit/uiapplicationdelegate/applicationdidenterbackground(_:)"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Learn the order in which your custom code is executed when your app moves to the background.",
+            "type": "text"
+          }
+        ],
+        "title": "About the background execution sequence",
+        "url": "/documentation/uikit/about-the-background-execution-sequence"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Prepare your app to be suspended.",
+            "type": "text"
+          }
+        ],
+        "title": "Preparing your UI to run in the background",
+        "url": "/documentation/uikit/preparing-your-ui-to-run-in-the-background"
+      },
+      {
+        "abstract": [
+          {
+            "text": "Configure your app to perform tasks in the background to make efficient use of processing time and power.",
+            "type": "text"
+          }
+        ],
+        "title": "Using background tasks to update your app",
+        "url": "/documentation/uikit/using-background-tasks-to-update-your-app"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs>
+ <linearGradient id="pearl" x1="260" y1="280" x2="650" y2="537" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fffef9"/>
+  <stop offset=".34" stop-color="#f7f5ef"/>
+  <stop offset=".64" stop-color="#e9e7e9"/>
+  <stop offset=".85" stop-color="#cdd1df"/>
+  <stop offset="1" stop-color="#adb3c8"/>
+ </linearGradient>
+ <linearGradient id="gold" x1="294" y1="746" x2="733" y2="432" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#c7a675"/>
+  <stop offset=".22" stop-color="#f5dfac"/>
+  <stop offset=".5" stop-color="#ead09b"/>
+  <stop offset=".77" stop-color="#c5a36d"/>
+  <stop offset="1" stop-color="#8c6e47"/>
+ </linearGradient>
+ <linearGradient id="return" x1="767" y1="385" x2="622" y2="588" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#f0dbab"/>
+  <stop offset=".28" stop-color="#d8bd83"/>
+  <stop offset=".63" stop-color="#aa864d"/>
+  <stop offset="1" stop-color="#74522b"/>
+ </linearGradient>
+ <linearGradient id="pearlBook" x1="254" y1="323" x2="555" y2="636" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#fffef9"/>
+  <stop offset=".42" stop-color="#f3f1eb"/>
+  <stop offset=".72" stop-color="#d8d9dc"/>
+  <stop offset="1" stop-color="#a4a6b1"/>
+ </linearGradient>
+ <linearGradient id="goldBook" x1="778" y1="311" x2="488" y2="677" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#f8e4ae"/>
+  <stop offset=".36" stop-color="#e6c989"/>
+  <stop offset=".72" stop-color="#bd9658"/>
+  <stop offset="1" stop-color="#84602e"/>
+ </linearGradient>
+</defs><path d="M 513 355
+       C 558 331 663 269 732 238 C 760 225 784 240 784 273
+       L 784 621 C 784 660 768 680 737 696
+       L 526 801 C 502 814 478 801 478 772 L 478 417
+       C 478 387 489 368 513 355 Z" fill="url(#goldBook)"/></svg>

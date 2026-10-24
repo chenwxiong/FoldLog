@@ -1,0 +1,33 @@
+{
+  "fill": {
+    "automatic-gradient": "extended-srgb:0.055,0.06,0.073,1.0"
+  },
+  "groups": [
+    {
+      "name": "Folded wings",
+      "lighting": "individual",
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.35
+      },
+      "specular": true,
+      "translucency": {
+        "enabled": true,
+        "value": 0.14
+      },
+      "layers": [
+        {
+          "image-name": "02-pearl-wing.svg",
+          "name": "Pearl wing"
+        },
+        {
+          "image-name": "01-gold-wing.svg",
+          "name": "Gold wing"
+        }
+      ]
+    }
+  ],
+  "supported-platforms": {
+    "squares": "shared"
+  }
+}

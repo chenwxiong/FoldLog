@@ -1,0 +1,33 @@
+{
+  "fill": {
+    "automatic-gradient": "extended-srgb:0.055,0.06,0.073,1.0"
+  },
+  "groups": [
+    {
+      "name": "Continuous folio and 00",
+      "lighting": "individual",
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.25
+      },
+      "specular": true,
+      "layers": [
+        {
+          "image-name": "digits.svg",
+          "name": "Custom 00 with turn"
+        },
+        {
+          "image-name": "book.svg",
+          "name": "One continuous pearl page surface"
+        },
+        {
+          "image-name": "gold-edge.svg",
+          "name": "Champagne lower page edge"
+        }
+      ]
+    }
+  ],
+  "supported-platforms": {
+    "squares": "shared"
+  }
+}
