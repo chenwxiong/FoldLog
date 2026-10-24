@@ -10,6 +10,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('result', type=Path)
 parser.add_argument('device')
 parser.add_argument('--seconds', type=int, default=240)
+parser.add_argument('--prefix', default='', help='Prefix screenshot names when validating another device.')
 args = parser.parse_args()
 seen = set()
 checks = []
@@ -26,7 +27,7 @@ while time.monotonic() < deadline:
             seen.add(name)
             time.sleep(0.3)
             subprocess.run(['xcrun', 'simctl', 'io', args.device, 'screenshot',
-                            str(args.result.parent / (name + '.png'))], check=True, capture_output=True)
+                            str(args.result.parent / (args.prefix + name + '.png'))], check=True, capture_output=True)
             if name.startswith('widget-shared-'):
                 group = subprocess.check_output(['xcrun', 'simctl', 'get_app_container', args.device,
                     'app.foldlog.preview', 'group.app.foldlog.preview'], text=True).strip()

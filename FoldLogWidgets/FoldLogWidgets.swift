@@ -38,10 +38,9 @@ struct FoldProvider: TimelineProvider {
 struct FoldEntryView: View {
     @Environment(\.widgetFamily) private var family
     let entry: FoldEntry
-    let variant: FoldWidgetVariant
 
     var body: some View {
-        FoldWidgetContent(value: entry.value, variant: variant, family: family)
+        FoldWidgetContent(value: entry.value, family: family)
             .containerBackground(WidgetPalette.background, for: .widget)
     }
 }
@@ -50,22 +49,10 @@ struct FoldCountWidget: Widget {
     let kind = "FoldLog.Count"
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: FoldProvider()) { entry in
-            FoldEntryView(entry: entry, variant: .count)
+            FoldEntryView(entry: entry)
         }
         .configurationDisplayName("今日折叠")
-        .description("查看今日已保存的折叠次数与每日上限。演示记录会单独标识。")
-        .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryInline])
-    }
-}
-
-struct FoldRemainingWidget: Widget {
-    let kind = "FoldLog.Remaining"
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: FoldProvider()) { entry in
-            FoldEntryView(entry: entry, variant: .remaining)
-        }
-        .configurationDisplayName("剩余折叠")
-        .description("查看距离个人每日上限的剩余次数。轻点可调整折叠目标。")
+        .description("在同一个小组件查看今日折叠、剩余次数与每日上限。轻点打开今日记录。")
         .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryInline])
     }
 }
@@ -74,13 +61,12 @@ struct FoldRemainingWidget: Widget {
 struct FoldLogWidgetBundle: WidgetBundle {
     var body: some Widget {
         FoldCountWidget()
-        FoldRemainingWidget()
     }
 }
 
 #Preview("今日折叠", as: .systemSmall) { FoldCountWidget() } timeline: {
     FoldEntry(date: .now, value: .preview)
 }
-#Preview("剩余折叠", as: .accessoryCircular) { FoldRemainingWidget() } timeline: {
+#Preview("折叠与剩余", as: .accessoryCircular) { FoldCountWidget() } timeline: {
     FoldEntry(date: .now, value: .preview)
 }

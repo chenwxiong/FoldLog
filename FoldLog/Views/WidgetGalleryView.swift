@@ -4,6 +4,24 @@ import WidgetKit
 struct WidgetGalleryView: View {
     @Environment(AppStore.self) private var store
     @State private var showExample = false
+    @State private var example = WidgetExample.normal
+
+    private enum WidgetExample: String, CaseIterable, Identifiable {
+        case normal = "目标内", unset = "未设目标", reached = "达到上限", exceeded = "超出上限", large = "大数字", unavailable = "待同步"
+        var id: Self { self }
+        var value: WidgetValue {
+            var value = WidgetValue.preview
+            switch self {
+            case .normal: break
+            case .unset: value.limit = nil
+            case .reached: value.count = 60
+            case .exceeded: value.count = 63
+            case .large: value.count = 123_456; value.limit = 999_999
+            case .unavailable: value.count = nil; value.limit = nil
+            }
+            return value
+        }
+    }
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 60)) { timeline in
@@ -12,7 +30,7 @@ struct WidgetGalleryView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("抬眼，心中有数。")
                             .font(.title2.weight(.semibold))
-                        Text("把今日折叠与剩余次数，放在桌面或锁屏。")
+                        Text("一个小组件，同时查看今日折叠与剩余次数。")
                             .foregroundStyle(.secondary)
                     }
                     Picker("预览数据", selection: $showExample) {
@@ -21,43 +39,39 @@ struct WidgetGalleryView: View {
                     }
                     .pickerStyle(.segmented)
                     .accessibilityIdentifier("widget-preview-source")
-                    let value = showExample ? WidgetValue.preview : store.widgetValue(at: timeline.date)
+                    if showExample {
+                        Picker("示例状态", selection: $example) {
+                            ForEach(WidgetExample.allCases) { Text($0.rawValue).tag($0) }
+                        }
+                        .pickerStyle(.menu)
+                        .accessibilityIdentifier("widget-preview-state")
+                    }
+                    let value = showExample ? example.value : store.widgetValue(at: timeline.date)
                     Text(showExample ? "样式示例 · 演示数据，不写入记录" : "当前来源：\(store.mode.title)")
                         .font(.caption).foregroundStyle(.secondary)
 
                     VStack(alignment: .leading, spacing: 12) {
                         Text("桌面 · 小号").font(.headline)
-                        ViewThatFits(in: .horizontal) {
-                            HStack(spacing: 16) {
-                                small(value, variant: .count)
-                                small(value, variant: .remaining)
-                            }
-                            VStack(alignment: .leading, spacing: 16) {
-                                small(value, variant: .count)
-                                small(value, variant: .remaining)
-                            }
-                        }
+                        small(value)
                     }
                     VStack(alignment: .leading, spacing: 12) {
                         Text("锁屏 · 圆形 / 单行").font(.headline)
-                        HStack(spacing: 24) {
-                            FoldWidgetContent(value: value, variant: .remaining, family: .accessoryCircular)
-                                .frame(width: 72, height: 72)
-                            FoldWidgetContent(value: value, variant: .count, family: .accessoryCircular)
-                                .frame(width: 72, height: 72)
-                        }
-                        FoldWidgetContent(value: value, variant: .count, family: .accessoryInline)
+                        FoldWidgetContent(value: value, family: .accessoryCircular)
+                            .frame(width: 64, height: 64)
+                            .accessibilityIdentifier("widget-summary-circular-preview")
+                        FoldWidgetContent(value: value, family: .accessoryInline)
                             .font(.subheadline)
+                            .accessibilityIdentifier("widget-summary-inline-preview")
                     }
                     .padding(20).frame(maxWidth: .infinity, alignment: .leading)
                     .background(Theme.card, in: RoundedRectangle(cornerRadius: 24))
 
                     VStack(alignment: .leading, spacing: 12) {
                         Text("添加到桌面").font(.headline)
-                        Text("长按桌面空白处 → 编辑 → 添加小组件 → 搜索“折记” → 选择“今日折叠”或“剩余折叠”。")
+                        Text("长按桌面空白处 → 编辑 → 添加小组件 → 搜索“折记” → 选择“今日折叠”。")
                         Text("添加到锁屏").font(.headline)
                         Text("长按锁屏 → 自定 → 锁定屏幕 → 点按时间上方或下方的小组件区域 → 选择“折记”。")
-                        Text("轻点次数打开今日；轻点剩余次数打开折叠目标。目标是个人每日上限，达到后继续计数。")
+                        Text("轻点小组件打开今日，在 App 中调整每日上限。进度条表示今日已使用的次数，达到上限后继续计数。")
                     }
                     .font(.subheadline)
                     VStack(alignment: .leading, spacing: 10) {
@@ -85,10 +99,10 @@ struct WidgetGalleryView: View {
         .navigationTitle("桌面与锁屏").navigationBarTitleDisplayMode(.inline)
     }
 
-    private func small(_ value: WidgetValue, variant: FoldWidgetVariant) -> some View {
-        FoldWidgetContent(value: value, variant: variant, family: .systemSmall)
-            .padding(16).frame(width: 156, height: 168)
+    private func small(_ value: WidgetValue) -> some View {
+        FoldWidgetContent(value: value, family: .systemSmall)
+            .padding(16).frame(width: 156, height: 156)
             .background(Theme.card, in: RoundedRectangle(cornerRadius: 24))
-            .accessibilityIdentifier(variant == .count ? "widget-count-small-preview" : "widget-remaining-small-preview")
+            .accessibilityIdentifier("widget-summary-small-preview")
     }
 }

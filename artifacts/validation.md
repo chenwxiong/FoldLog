@@ -1,6 +1,24 @@
 # 折记 0.1 验证记录
 
-日期：2026-10-24。本轮为黑白金 UI 更新。构建环境：Xcode 27.1（27A9275），iOS 27.1 SDK。
+日期：2026-10-24。最新变更为合并今日折叠与剩余的小组件；下方保留此前 UI、导航与图标记录。构建环境：Xcode 27.1（27A9275），iOS 27.1 SDK。
+
+## 今日与剩余合并组件（当前版本）
+
+2026-10-24，按用户要求仅保留一个“今日折叠”组件：桌面小号以今日次数为主数字、金色剩余为次级数字，附上限、已用进度与更新状态；锁屏圆形 / 单行同时展示今日及剩余，整体轻点进入今日。沿用 `FoldLog.Count`，移除独立 `FoldLog.Remaining`；此前开发版的剩余组件需重新添加。计数引擎、目标生效规则、原始档案与共享快照格式未改。
+
+| 验证 | 结果与证据 |
+| --- | --- |
+| 联调、画廊与辅助字号 | `WidgetCombinedAccepted.xcresult` 4 项通过：共享记录、目标保存、来源切换、清空、深链、六种示例状态、深浅色与最大辅助字号。属于本轮初次整合版本；随后补验如下 |
+| 桌面六位数及系统挂载 | `WidgetCombinedFinal.xcresult` 2 项通过。实际系统小号显示演示折叠 1 / 剩余 2 / 上限 3，点击进入今日；菜单已关闭，未用画廊冒充系统挂载。六位数上限移至底行，今日 123456 / 剩余 876543 / 上限 999999 均完整显示 |
+| Duo 界面与锁屏预览 | `WidgetCombinedDuoFinal.xcresult` 1 项通过；截图复核发现圆形在六位数时仍省略，修正后以 `WidgetCombinedCircularAccepted.xcresult` 为准，1 项通过，运行时警告为空。圆形标签独立于 Gauge 的内部尺寸约束，今日与剩余均完整显示，正常数字及深浅色已复核 |
+| 状态 | 未设目标显示剩余“—”且无进度；达到上限显示剩余 0；超出显示剩余 0 和超出次数；待同步显示“—”并引导打开 App。画廊示例不写入档案 |
+| 编译与恢复 | 最新临时签名 Debug 构建通过，App 与扩展覆盖安装于两台 Duo 和 375pt 开发预览模拟器，正常启动以恢复各自的共享投影；未卸载 App 或重置普通档案。本轮未重复 Release 真机目标编译或未修改的数据测试 |
+
+精选截图：[真实桌面挂载](widget-combined-home-system.png)、[浅色](widget-combined-light.png)、[深色](widget-combined-dark.png)、[未设目标](widget-combined-unset.png)、[超出上限](widget-combined-exceeded.png)、[桌面六位数](widget-combined-large.png)、[Duo 深色](duo-widget-combined-dark.png)、[Duo 六位数](duo-widget-combined-large.png)、[锁屏浅色](duo-widget-combined-lock-light.png)、[锁屏深色](duo-widget-combined-lock-dark.png)、[锁屏六位数](duo-widget-combined-lock-large.png)。[卡片局部](widget-combined-card-light.png)仅裁剪自浅色实图，未重绘内容。375pt 画廊采用对应 XCTest 附件，避免异步截图延迟误截到下一步状态菜单；Duo 通过 simctl 取得当前激活屏幕。
+
+中间截图复核还发现 Gauge 的默认标签与自定义中心重叠，最终已隐藏 Gauge 自身标签；上述最终截图和 `WidgetCombinedCircularAccepted.xcresult` 替代中间 `WidgetCombinedCircularFinal.xcresult` 的样式结果。测试断言检查完整无障碍标签，不能单凭测试通过判断可见文字完整，因此另人工核对上述六位数实图。
+
+目标开关仍触发既有的 SwiftUI `Invalid frame dimension (negative or non-finite).` 警告，`WidgetCombinedFinal.xcresult` 保留该诊断；本轮未声称解决。锁屏截图为 App 内共用原生视图预览，并非真实 Duo 锁屏挂载；以上模拟器流程不证明真机铰链连续性或后台采集。组件仍只显示已保存记录，刷新受系统调度。
 
 ## Duo 纵向控件（当前版本）
 

@@ -6,9 +6,17 @@
 
 仓库：[chenwxiong/FoldLog](https://github.com/chenwxiong/FoldLog)，当前分支 `main`。首次完整项目提交为 `25dedee`（`feat: add FoldLog Duo app and compact widgets`）。本文件和根目录 AGENTS.md 是随后补交的接续入口，继续开发时以远端最新提交为准。
 
-本轮任务已完成：修复 Duo 适配，增加最小尺寸桌面 / 锁屏组件，按用户提供的 Apple Vertical controls 规范恢复系统自动纵向导航，并推送 GitHub。用户随后要求把上下文也提交，供另一个 Codex 执行。
+前轮已完成 Duo 适配、最小尺寸桌面 / 锁屏组件及按 Apple Vertical controls 规范恢复系统自动纵向导航，并推送源码与交接上下文。最新追加任务已将今日折叠与剩余次数合为一个组件；实现及验证见下文与验证记录。
 
 当前没有因交接而新增的产品功能任务。后续按用户的新指令继续，不把下文待验事项自动当成已授权的商店发布任务。
+
+## 最新组件整合
+
+- 仅保留一个“今日折叠”组件，沿用 `FoldLog.Count`；移除独立 `FoldLog.Remaining`。旧开发版的“今日折叠”可继续使用，已挂载的“剩余折叠”需重新选择统一组件。
+- 桌面小号：大数字显示今日折叠，金色次级数字显示剩余，附个人上限、使用进度及更新 / 同步状态。大数字时上限移至底行，避免与剩余挤占空间。
+- 未设目标时显示剩余“—”；达到 / 超过上限保持剩余 0，提示达到或超出，计数继续。圆形与单行同时展示今日及剩余，整体点击进入今日。
+- 设置内画廊只有一个小号预览，可选择未设目标、达到、超出、大数字及待同步的演示状态；示例不写档案。原始档案、三类计数、目标规则及共享快照格式未变。
+- 验证结果与真实截图见 [最新验证记录](../artifacts/validation.md)。锁屏样式来自共用原生视图预览，尚未完成真实 Duo 锁屏挂载。
 
 ## 已确认的产品决策
 
@@ -20,7 +28,7 @@
 - 合拢时突出今日折叠和半开 / 全开目标；半开或全开时突出相应次数，并显示共享的折叠目标。页面出现、切屏和旋转不能自行增加事件。
 - 当前实现为三类独立个人每日上限，默认关闭；首次可当天生效，后续修改默认次日，关闭立即生效。达到上限仍继续计数。
 - 数据本地保存，演示与设备档案分开。已有 JSON 导出，尚无导入恢复。次数不代表折痕、屏幕健康或硬件寿命。
-- 用户要求最小组件：桌面仅 `.systemSmall`，锁屏仅 `.accessoryCircular` / `.accessoryInline`。保留“今日折叠”“剩余折叠”两种入口，不恢复中号或矩形。
+- 用户最新要求将今日折叠和剩余次数整合在同一个组件：仅一个“今日折叠”入口，桌面 `.systemSmall`，锁屏 `.accessoryCircular` / `.accessoryInline`。已折叠为主数字、剩余为次级数字并显示上限；不要恢复两个统计组件、中号或矩形。
 - 用户偏好直接完成已授权工作，避免对已确定范围重复确认；界面方向为黑白金、SF Symbols 和原生系统控件。
 
 完整计数边界及十组例子见 [计数与姿态展示规则](计数与姿态展示规则.md)。该文部分旧规划已被后续版本替代，应同时参考当前源码和本文件。
@@ -54,7 +62,7 @@
 | `FoldLog/Views/TodayView.swift`、`HistoryView.swift` | 今日、自适应双列和历史 |
 | `FoldLog/Views/SettingsView.swift` | 分类分栏、GoalEditorSheet、目标草稿保护 |
 | `FoldLog/Core/WidgetSnapshot.swift` | 组件统计投影、共享文件、链接路由 |
-| `FoldLog/WidgetSync.swift`、`FoldLogWidgets/` | App Group 发布、WidgetKit 时间线与两种组件 |
+| `FoldLog/WidgetSync.swift`、`FoldLogWidgets/` | App Group 发布、WidgetKit 时间线与统一统计组件 |
 | `FoldLog/Widgets/FoldWidgetContent.swift` | 宿主预览和扩展共用的原生组件视图 |
 | `FoldLog/FoldLogIcon.icon` | 当前原创“暖白连页 00”分层图标 |
 | `Tests/`、`FoldLogUITests/` | 核心测试、原生 UI 和组件联调 |
@@ -93,12 +101,13 @@ xcodebuild -project FoldLog.xcodeproj -scheme FoldLog \
 
 | 已完成验证 | 结果 |
 | --- | --- |
-| 核心、兼容策略、组件数据 | `swift test` 最近一次 17 项通过；本轮只改导航和表单，未重复执行未修改的核心测试 |
+| 核心、兼容策略、组件数据 | `swift test` 最近一次 17 项通过；本轮只改组件呈现、入口与界面验证，沿用未修改的数据测试结果 |
 | Duo 自动导航及草稿；分栏、旋转、深浅色与字号回退 | `DuoVerticalFinal.xcresult` 两项通过 |
 | 375pt 开发预览的目标编辑、放弃和保存读回 | `DuoVerticalCompactAccepted.xcresult` 一项通过 |
-| 最小组件的联调、画廊和字号 | `WidgetMinimalAccepted.xcresult` 中 3 项 WidgetUITests 通过 |
-| 系统真实桌面小号挂载及点击 | `WidgetMinimalHome.xcresult` 一项通过 |
-| 编译 | 最新导航已通过临时签名 Debug 测试构建；此前组件与图标版本通过关闭签名的 Release 真机目标编译，不能理解为已安装真机 |
+| 合并组件的联调、画廊和字号 | `WidgetCombinedAccepted.xcresult` 4 项通过；`WidgetCombinedFinal.xcresult` 补验六位数桌面布局与系统挂载，2 项通过。锁屏圆形后续修正见最新验证记录 |
+| Duo 统一组件与圆形六位数 | `WidgetCombinedCircularAccepted.xcresult` 1 项通过，运行时警告为空；已复核完整数值、正常数字与深浅色，替代中间版本的圆形样式结果 |
+| 系统真实桌面小号挂载及点击 | `WidgetCombinedFinal.xcresult` 的系统项通过；同卡显示折叠 1 / 剩余 2 / 上限 3，整体点击进入今日 |
+| 编译 | 组件整合已通过临时签名 Debug 测试构建；此前组件与图标版本通过关闭签名的 Release 真机目标编译，不能理解为当前改动已安装真机 |
 
 完整 xcresult、构建产物和临时日志只保留在原开发机，已被 `.gitignore` 排除；GitHub 提供验证摘要与精选真实截图。新机器需要时重新运行，不能依赖本地结果包存在。
 

@@ -14,14 +14,15 @@ final class WidgetUITests: XCTestCase {
         app.open(URL(string: "foldlog://goal/closed")!)
         let toggle = app.switches["goal-enabled"]
         XCTAssertTrue(toggle.waitForExistence(timeout: 5))
-        toggle.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+        toggle.coordinate(withNormalizedOffset: CGVector(dx: 1, dy: 0.5))
+            .withOffset(CGVector(dx: -40, dy: 0)).tap()
         let input = app.textFields["goal-limit"]
         input.tap()
         input.typeText("3")
         if app.buttons["完成"].isHittable { app.buttons["完成"].tap() }
         app.buttons["save-goal"].tap()
         openGallery()
-        let countPreview = app.otherElements["widget-count-small-preview"]
+        let countPreview = app.otherElements["widget-summary-small-preview"]
         XCTAssertTrue(countPreview.waitForExistence(timeout: 4))
         XCTAssertTrue(countPreview.label.contains("剩余 2 次"), countPreview.label)
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "小组件暂未同步")).firstMatch.exists)
@@ -85,6 +86,59 @@ final class WidgetUITests: XCTestCase {
         capture("widget-minimal-dark")
         scrollGallery()
         capture("widget-minimal-lock-dark")
+    }
+
+    @MainActor func testCombinedWidgetStates() {
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launchArguments = ["--ui-testing"]
+        app.launch()
+        openGallery()
+        app.segmentedControls.buttons["示例效果"].tap()
+        let preview = app.otherElements["widget-summary-small-preview"]
+        XCTAssertTrue(preview.waitForExistence(timeout: 4))
+        XCTAssertTrue(preview.label.contains("折叠 24 次"), preview.label)
+        XCTAssertTrue(preview.label.contains("剩余 36 次"), preview.label)
+        XCTAssertFalse(app.otherElements["widget-remaining-small-preview"].exists)
+        capture("widget-combined-light")
+
+        let states: [(String, [String], String)] = [
+            ("未设目标", ["折叠 24 次", "未设置每日上限"], "unset"),
+            ("达到上限", ["折叠 60 次", "剩余 0 次", "已达上限"], "reached"),
+            ("超出上限", ["折叠 63 次", "剩余 0 次", "已超出 3 次"], "exceeded"),
+            ("大数字", ["折叠 123456 次", "剩余 876543 次"], "large"),
+            ("待同步", ["记录暂不可用"], "unavailable")
+        ]
+        for (title, labels, name) in states {
+            app.buttons["widget-preview-state"].tap()
+            app.buttons[title].tap()
+            for label in labels { XCTAssertTrue(preview.label.contains(label), preview.label) }
+            capture("widget-combined-\(name)")
+            if name == "large" {
+                scrollGallery()
+                let circular = app.otherElements["widget-summary-circular-preview"]
+                XCTAssertTrue(circular.label.contains("折叠 123456 次"), circular.label)
+                XCTAssertTrue(circular.label.contains("剩余 876543 次"), circular.label)
+                capture("widget-combined-lock-large")
+                app.scrollViews["widget-gallery-scroll"].swipeDown()
+            }
+        }
+        app.buttons["widget-preview-state"].tap()
+        app.buttons["目标内"].tap()
+        scrollGallery()
+        let circular = app.otherElements["widget-summary-circular-preview"]
+        XCTAssertTrue(circular.exists)
+        XCTAssertTrue(circular.label.contains("剩余 36 次"), circular.label)
+        capture("widget-combined-lock-light")
+
+        app.terminate()
+        app.launchArguments = ["--ui-testing", "--dark"]
+        app.launch()
+        openGallery()
+        app.segmentedControls.buttons["示例效果"].tap()
+        capture("widget-combined-dark")
+        scrollGallery()
+        capture("widget-combined-lock-dark")
     }
 
     @MainActor private func openGallery() {

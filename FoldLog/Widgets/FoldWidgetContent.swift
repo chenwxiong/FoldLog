@@ -1,8 +1,6 @@
 import SwiftUI
 import WidgetKit
 
-enum FoldWidgetVariant { case count, remaining }
-
 enum WidgetPalette {
     static let gold = Color(uiColor: UIColor { traits in
         traits.userInterfaceStyle == .dark
@@ -10,18 +8,17 @@ enum WidgetPalette {
             : UIColor(red: 0.525, green: 0.384, blue: 0.114, alpha: 1)
     })
     static let background = Color(uiColor: .systemBackground)
+    static let secondary = Color.primary.opacity(0.65)
 }
 
 /// The extension and in-app style gallery use these same native views.
 struct FoldWidgetContent: View {
     let value: WidgetValue
-    let variant: FoldWidgetVariant
     let family: WidgetFamily
 
-    private var isRemaining: Bool { variant == .remaining }
-    private var title: String { isRemaining ? "剩余折叠" : "今日折叠" }
-    private var number: String { (isRemaining ? value.remaining : value.count).map(String.init) ?? "—" }
-    private var destination: URL { (isRemaining && value.count != nil ? WidgetDestination.goal : .today).url }
+    private var number: String { value.count.map(String.init) ?? "—" }
+    private var remaining: String { value.remaining.map(String.init) ?? "—" }
+    private var usesLargeNumbers: Bool { max(value.remaining ?? 0, value.limit ?? 0) >= 10_000 }
 
     var body: some View {
         Group {
@@ -33,95 +30,115 @@ struct FoldWidgetContent: View {
         }
         // Widget canvases have a fixed system size; the complete value remains available to VoiceOver.
         .dynamicTypeSize(...DynamicTypeSize.large)
-        .widgetURL(destination)
+        .widgetURL(WidgetDestination.today.url)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(value.accessibilitySummary)
     }
 
     private var small: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 4) {
             header
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Text(number)
+                    .font(.system(size: 40, weight: .semibold, design: .rounded))
+                    .monospacedDigit().minimumScaleFactor(0.45).lineLimit(1)
+                Text("次").font(.caption).foregroundStyle(WidgetPalette.secondary)
+            }
             Spacer(minLength: 0)
-            Text(number)
-                .font(.system(size: 50, weight: .semibold, design: .rounded))
-                .monospacedDigit().minimumScaleFactor(0.45).lineLimit(1)
-                .contentTransition(.numericText())
-            Text(isRemaining ? value.goalStatus : countDetail)
-                .font(.caption).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.7)
-            Spacer(minLength: 0)
+            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                Text("剩余").font(.caption)
+                Text(remaining)
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .monospacedDigit().lineLimit(1).minimumScaleFactor(0.5)
+                Text("次").font(.caption)
+                Spacer(minLength: 4)
+                if !usesLargeNumbers {
+                    Text(value.limit.map { "上限 \($0)" } ?? (value.count == nil ? "待同步" : "未设目标"))
+                        .font(.caption2).foregroundStyle(WidgetPalette.secondary)
+                        .lineLimit(1).minimumScaleFactor(0.65)
+                }
+            }
+            .foregroundStyle(value.remaining == nil ? Color.secondary : WidgetPalette.gold)
+            .lineLimit(1)
+            if value.count != nil && value.limit != nil {
+                ProgressView(value: value.progress)
+                    .tint(WidgetPalette.gold)
+                    .accessibilityHidden(true)
+            }
             freshness
         }
     }
 
     private var header: some View {
         HStack(spacing: 5) {
-            Image(systemName: "rectangle.portrait").foregroundStyle(WidgetPalette.gold)
-            Text(title).fontWeight(.medium)
+            Image(systemName: "rectangle.portrait").foregroundStyle(WidgetPalette.gold).accessibilityHidden(true)
+            Text("今日折叠").fontWeight(.medium)
             Spacer(minLength: 2)
             if value.mode == .demo {
-                Text("演示").font(.caption2).foregroundStyle(.secondary)
+                Text("演示").font(.caption2).foregroundStyle(WidgetPalette.secondary)
             }
         }
         .font(.caption).lineLimit(1).minimumScaleFactor(0.75)
     }
 
-    private var countDetail: String {
-        if value.count == nil { return "打开 App 同步" }
-        if value.exceeded > 0 { return "已超出 \(value.exceeded) 次 · 上限 \(value.limit!)" }
-        return value.remaining.map { "剩余 \($0) 次 · 上限 \(value.limit!)" } ?? "未设置每日上限"
-    }
-
     private var freshness: some View {
         HStack(spacing: 4) {
-            if value.count == nil || value.needsSync || value.recordingPaused {
+            if usesLargeNumbers, let limit = value.limit {
+                Text("上限 \(limit)").fixedSize(horizontal: true, vertical: false)
+                Spacer(minLength: 4)
+                Text(value.recordingPaused ? "记录暂停" : value.needsSync ? "待同步" :
+                     value.exceeded > 0 ? "超 \(value.exceeded)" : value.remaining == 0 ? "已达上限" : "已保存")
+            } else if value.count == nil || value.needsSync || value.recordingPaused {
                 Image(systemName: "arrow.clockwise")
                 Text(value.status)
             } else {
-                Text(value.mode == .demo ? "演示" : "已保存")
+                Text(value.exceeded > 0 ? "超出 \(value.exceeded) 次" : value.remaining == 0 ? "已达上限" : "更新")
                 if let date = value.updatedAt {
                     Text(date, style: .time).monospacedDigit()
                 }
             }
             Spacer(minLength: 0)
         }
-        .font(.caption2).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.7)
+        .font(.caption2).foregroundStyle(WidgetPalette.secondary).lineLimit(1).minimumScaleFactor(0.7)
     }
 
     private var inline: some View {
         Label {
             if value.count == nil { Text("折记 · 打开 App 同步") }
-            else if isRemaining {
-                Text(value.remaining.map { "\(value.mode == .demo ? "演示 · " : "")折叠剩余 \($0) 次" }
-                     ?? "\(value.mode == .demo ? "演示 · " : "")折叠 · 未设目标")
-            } else {
-                Text("\(value.mode == .demo ? "演示 · " : "")折叠 \(value.count!) 次")
-            }
+            else { Text(inlineSummary) }
         } icon: { Image(systemName: "rectangle.portrait") }
+    }
+
+    private var inlineSummary: String {
+        let source = value.mode == .demo ? "演示 · " : ""
+        let goal = value.remaining.map { "余 \($0)" } ?? "未设目标"
+        let overflow = value.exceeded > 0 ? " · 超 \(value.exceeded)" : ""
+        return "\(source)折叠\(number) · \(goal)\(overflow)"
     }
 
     private var circular: some View {
         ZStack {
             AccessoryWidgetBackground()
             if value.limit != nil && value.count != nil {
-                Gauge(value: isRemaining ? 1 - value.progress : value.progress) { Text(title) } currentValueLabel: {
-                    circularNumber
-                }
-                .gaugeStyle(.accessoryCircularCapacity)
-            } else { circularNumber }
+                Gauge(value: value.progress) { EmptyView() }
+                    .gaugeStyle(.accessoryCircularCapacity)
+                    .accessibilityHidden(true)
+            }
+            // Keep the label outside Gauge's currentValueLabel sizing so long counts can scale.
+            circularNumber.frame(width: 44, height: 44)
         }
     }
 
     private var circularNumber: some View {
         VStack(spacing: 0) {
-            Text(value.mode == .demo ? (isRemaining ? "演示余" : "演示折叠") : (isRemaining ? "剩余" : "折叠"))
-                .font(.system(size: 9, weight: .medium))
+            Text(value.count == nil ? "待同步" : value.mode == .demo ? "演示" : "折叠")
+                .font(.system(size: 8, weight: .medium))
                 .lineLimit(1).minimumScaleFactor(0.75)
-            Text(number).font(.system(size: 22, weight: .semibold, design: .rounded))
+            Text(number).font(.system(size: 19, weight: .semibold, design: .rounded))
                 .monospacedDigit().lineLimit(1).minimumScaleFactor(0.45)
-            if isRemaining && value.limit == nil {
-                Text("未设置").font(.system(size: 9))
-            }
+            Text(value.remaining == nil ? (value.count == nil ? "打开折记" : "未设目标") : "余 \(remaining)")
+                .font(.system(size: 9, weight: .medium))
+                .lineLimit(1).minimumScaleFactor(0.65)
         }
-        .padding(.horizontal, 4)
     }
 }

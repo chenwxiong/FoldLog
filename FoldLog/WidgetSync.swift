@@ -8,6 +8,5 @@ enum WidgetSync {
         }
         try repository.save(snapshot)
         WidgetCenter.shared.reloadTimelines(ofKind: "FoldLog.Count")
-        WidgetCenter.shared.reloadTimelines(ofKind: "FoldLog.Remaining")
     }
 }

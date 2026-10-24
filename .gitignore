@@ -47,3 +47,15 @@ artifacts/*
 !artifacts/duo-goal-editor-largest-text.png
 !artifacts/duo-goal-system-largest-text.png
 !artifacts/duo-goal-system-largest-text-scrolled.png
+!artifacts/widget-combined-light.png
+!artifacts/widget-combined-dark.png
+!artifacts/widget-combined-unset.png
+!artifacts/widget-combined-exceeded.png
+!artifacts/widget-combined-large.png
+!artifacts/widget-combined-home-system.png
+!artifacts/duo-widget-combined-dark.png
+!artifacts/duo-widget-combined-large.png
+!artifacts/duo-widget-combined-lock-light.png
+!artifacts/duo-widget-combined-lock-dark.png
+!artifacts/duo-widget-combined-lock-large.png
+!artifacts/widget-combined-card-light.png
