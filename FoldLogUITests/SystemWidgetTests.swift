@@ -25,7 +25,7 @@ final class SystemWidgetTests: XCTestCase {
         XCUIDevice.shared.press(.home)
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let widget = springboard.descendants(matching: .any)
-            .matching(NSPredicate(format: "label CONTAINS %@", "今日已记录折叠")).firstMatch
+            .matching(NSPredicate(format: "label CONTAINS %@ OR label CONTAINS %@", "剩余折叠", "今日已记录折叠")).firstMatch
         if widget.exists && widget.frame.width > widget.frame.height * 1.4 {
             widget.press(forDuration: 1.5)
             let small = springboard.buttons["小型小组件"]
@@ -60,13 +60,14 @@ final class SystemWidgetTests: XCTestCase {
         }
         if springboard.buttons["编辑主屏幕"].exists { XCUIDevice.shared.press(.home) }
         XCTAssertTrue(widget.waitForExistence(timeout: 25), springboard.debugDescription)
-        let sharedRecord = NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@", "折叠 1 次", "剩余 2 次")
+        let sharedRecord = NSPredicate(format: "label CONTAINS %@", "剩余折叠 2 次")
         expectation(for: sharedRecord, evaluatedWith: widget)
         waitForExpectations(timeout: 25)
         XCTAssertLessThan(widget.frame.width, widget.frame.height * 1.4)
-        capture("widget-combined-home-system")
+        capture("widget-remaining-home-system")
         widget.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
         XCTAssertTrue(app.navigationBars["今日"].waitForExistence(timeout: 8))
+        XCTAssertEqual(app.staticTexts["hero-count"].label, "1")
     }
 
     @MainActor private func capture(_ name: String) {
