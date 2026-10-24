@@ -30,6 +30,7 @@
 
 ## 文档
 
+- [Codex 交接上下文](docs/CODEX_HANDOFF.md)：另一台机器或另一个 Codex 的接续入口，包含已确认决策、验证结果和注意事项。
 - [体验版运行说明](docs/体验版运行说明.md)：运行方式、实现范围、测试与限制。
 - [桌面与锁屏小组件](docs/桌面与锁屏小组件.md)：添加方法、数据口径与工程配置。
 - [小号组件实际桌面效果](artifacts/widget-home-small-system.png)、[最小组件样式预览](artifacts/widget-minimal-light.png)：系统挂载与共用原生视图截图，示例记录带演示标识。
