@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="使用范围、常见问题与联系方法。">
+  <meta name="referrer" content="no-referrer">
+  
+  <title>帮助与支持 · 折记 FoldLog</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">跳到正文</a>
+  
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="折记 FoldLog，帮助与支持"><span>折记</span><span class="brand-en" lang="en">FoldLog</span></a>
+    <nav class="primary-nav" aria-label="网站导航"><a href="index.html" aria-current="page">帮助与支持</a><a href="terms.html">用户协议</a><a href="privacy.html">隐私政策</a></nav>
+  </header>
+  <main id="main" class="shell" tabindex="-1">
+    <div class="document-heading">
+      <p class="eyebrow" lang="en">FOLDLOG / SUPPORT</p>
+      <h1>帮助与支持</h1>
+      <p class="document-description">使用范围、常见问题与联系方法。</p>
+      <dl class="metadata">
+        <div><dt>版本</dt><dd>1.0</dd></div>
+        <div><dt>更新日期</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
+        <div><dt>生效日期</dt><dd>2026-10-27</dd></div>
+      </dl>
+    </div>
+    <div class="document-layout">
+      <aside class="desktop-toc"><nav aria-label="本文目录"><p class="toc-label">本文目录</p><ol><li><a href="#section-01">01 使用前先确认</a></li><li><a href="#section-02">02 半开为什么没有计数</a></li><li><a href="#section-03">03 每日目标如何生效</a></li><li><a href="#section-04">04 小组件为何没有立即更新</a></li><li><a href="#section-05">05 如何导出或清空数据</a></li><li><a href="#section-06">06 提示记录已暂停怎么办</a></li><li><a href="#section-07">07 联系开发者</a></li></ol><a class="back-top" href="#top">回到顶部 ↑</a></nav></aside>
+      <div class="document-content">
+        <details class="mobile-toc"><summary>本文目录 <span aria-hidden="true">＋</span></summary><nav aria-label="本文目录"><ol><li><a href="#section-01">01 使用前先确认</a></li><li><a href="#section-02">02 半开为什么没有计数</a></li><li><a href="#section-03">03 每日目标如何生效</a></li><li><a href="#section-04">04 小组件为何没有立即更新</a></li><li><a href="#section-05">05 如何导出或清空数据</a></li><li><a href="#section-06">06 提示记录已暂停怎么办</a></li><li><a href="#section-07">07 联系开发者</a></li></ol></nav></details>
+        <article aria-label="帮助与支持正文"><p>把习惯记下来，把时间留给自己。这里整理了折记的使用范围、数据管理方式，以及遇到问题时的联系方法。</p>
+<section aria-labelledby="section-01"><h2 id="section-01">01 使用前先确认</h2>
+<p>折记当前仅支持 iPhone Duo，要求 iOS 27.1 或更新版本。其他 iPhone 上的兼容提示不表示可进行真实开合记录。</p>
+<p>折记以 App 实际收到并成功保存的有效开合事件为准，也会尽力记录后台有效回调。系统挂起、锁屏或输入中断期间可能漏记；App 未运行期间的动作不会补记，不保证全天完整记录。恢复观测后的首次状态只建立基线，不会补造缺失记录。</p>
+</section>
+<section aria-labelledby="section-02"><h2 id="section-02">02 半开为什么没有计数</h2>
+<p>从合拢进入半开后，需要在连续有效观测中保持满 1 秒。短暂经过半开不会计入；从全开退回半开也不会增加半开次数。半开确认后再全开，两类分别各计一次。</p>
+<p>三类次数独立保存，请分别查看折叠、半开和全开，不要将半开与全开直接相加当成展开总次数。</p>
+</section>
+<section aria-labelledby="section-03"><h2 id="section-03">03 每日目标如何生效</h2>
+<p>在「设置 → 每日目标」中，分别设置折叠、半开和全开的上限。首次设置可当天生效，后续修改通常默认次日生效；保存前可查看界面上的生效时间。关闭目标立即生效。</p>
+<p>达到目标上限仍会继续计数，剩余次数最低显示为 0。目标用于主动管理习惯，不会锁住设备或限制其他 App。次数不能表示折痕程度或硬件寿命。</p>
+</section>
+<section aria-labelledby="section-04"><h2 id="section-04">04 小组件为何没有立即更新</h2>
+<p>小组件展示 App 已保存的今日折叠和剩余次数，刷新由系统安排。它不会独立采集开合，因此不能依靠小组件补记后台动作。</p>
+<p>可以打开折记确认数据和记录状态；若设置页提示同步异常，可使用「重试同步小组件」。未设置目标时，剩余次数显示为「—」。</p>
+</section>
+<section aria-labelledby="section-05"><h2 id="section-05">05 如何导出或清空数据</h2>
+<p>在「设置 → 数据」中可以导出 JSON 记录，也可以清空记录。清空操作会按照确认提示列明的范围重置次数、历史和目标，外观等偏好不会一并重置。</p>
+<p>清空无法在 App 内撤销，已导出或分享的副本也不会自动删除。当前没有 JSON 导入恢复功能；如需保留记录，请先导出并自行妥善管理文件。</p>
+<p>移除小组件不会清空记录。系统备份或设备迁移是否保留文件，取决于你的系统设置与实际处理方式。</p>
+</section>
+<section aria-labelledby="section-06"><h2 id="section-06">06 提示记录已暂停怎么办</h2>
+<p>若 App 提示无法读取记录或保存失败，请先确认设备储存空间，并按 App 提供的重试入口操作。遇到读取问题时，App 会保留原文件并暂停记录。</p>
+<p>不要为排查问题直接删除 App 或清空记录，以免丢失仅保存在本地的历史。问题持续时，可以通过下方邮箱联系我们。</p>
+</section>
+<section aria-labelledby="section-07"><h2 id="section-07">07 联系开发者</h2>
+<p>联系邮箱：<a href="mailto:chenwxiong@gmail.com">chenwxiong@gmail.com</a>。提供方：折记 / FoldLog 个人开发者。</p>
+<p>描述问题时，建议附上 App 版本、iOS 版本、设备型号、发生时间和复现步骤。截图请遮盖无关个人信息；无需主动提供密码或完整的记录档案。</p>
+<p>关于使用规则和数据处理，可继续阅读 <a href="terms.html">用户协议</a> 与 <a href="privacy.html">隐私政策</a>。</p>
+</section></article>
+        <div class="document-end"><span aria-hidden="true">—</span><p>如有疑问，请联系 <a href="mailto:chenwxiong@gmail.com">chenwxiong@gmail.com</a></p><a class="back-top" href="#top">回到顶部 ↑</a></div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer shell"><p>折记 / FoldLog 个人开发者</p><nav aria-label="页脚导航"><a href="terms.html">用户协议</a><a href="privacy.html">隐私政策</a><a href="mailto:chenwxiong@gmail.com">联系开发者</a></nav></footer>
+</body>
+</html>
