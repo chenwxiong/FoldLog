@@ -41,9 +41,9 @@
       <p class="document-description">Funzioni, utilizzo e gestione dei dati di FoldLog.</p>
       <p class="translation-note">Questa pagina è una traduzione di riferimento dell’originale in cinese semplificato. <a href="../terms.html" lang="zh-Hans">Originale cinese</a></p>
       <dl class="metadata">
-        <div><dt>Versione</dt><dd>1.0</dd></div>
-        <div><dt>Aggiornamento</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>In vigore dal</dt><dd>2026-10-27</dd></div>
+        <div><dt>Versione</dt><dd>1.1</dd></div>
+        <div><dt>Aggiornamento</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>In vigore dal</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,6 +64,7 @@
 <p>La versione attuale è destinata solo a iPhone Duo con iOS 27.1 o successivo. Verifica i requisiti prima del download. Le capacità dipendono anche dagli input della cerniera realmente forniti dal sistema.</p>
 <p>Sono disponibili registri indipendenti di chiusura, apertura parziale e completa, totali quotidiani e cumulativi, cronologia, limiti personali giornalieri, export JSON e widget di piegature odierne e residuo.</p>
 <p>Attualmente non ci sono account, cloud dello sviluppatore, abbonamenti, acquisti in-app o pubblicità. Il prezzo del download è quello mostrato dall’App Store al momento.</p>
+<p>I due modelli firmati sono file locali inclusi nell’app, senza link iCloud necessario. Confermi importazione, esecuzione automatica e con blocco in Comandi Rapidi. FoldLog non può leggere o modificare gli interruttori del sistema. Puoi disattivarli o eliminarli lì; al trattamento di sistema si applicano le regole Apple.</p>
 </section>
 <section aria-labelledby="section-04"><h2 id="section-04">04 Conteggio e copertura</h2>
 <ul>
@@ -71,7 +72,9 @@
 <li>Da chiuso a parzialmente aperto si conta dopo un secondo continuo; meno di un secondo non conta. L’apertura completa successiva a una parziale confermata aggiunge un evento completo separato.</li>
 <li>Tornare da completamente a parzialmente aperto non aggiunge aperture parziali. Una nuova apertura completa può aggiungere un evento completo. Le notifiche ripetute non duplicano il conteggio.</li>
 <li>Il primo stato di ogni osservazione continua stabilisce il riferimento. Uno stato recuperato non ricostruisce movimenti mancanti.</li>
-<li>Sono registrati eventi validi ricevuti e salvati, tentando anche in background. Sospensione, blocco schermo, uscita dall’app o input assenti possono lasciare lacune. Non è garantita la copertura integrale della giornata.</li>
+<li>Solo per iPhone Duo con iOS 27.1 o successivo. Configurando entrambi i modelli e le opzioni di esecuzione, le automazioni di Comandi Rapidi possono registrare le chiusure in background. Contano solo gli eventi ricevuti e salvati; non è garantita una giornata senza lacune.</li>
+<li>L’azione di chiusura aggiunge una chiusura quando la sequenza lo consente. L’azione di apertura riceve un evento e permette di contare la chiusura successiva; non aggiunge direttamente aperture complete o parziali. Aggiungi e abilita entrambi i modelli. Segnalazioni di chiusura identiche consecutive non aggiungono conteggi.</li>
+<li>Le aperture parziali e complete dipendono ancora dai dati validi della cerniera ricevuti dall’app. La semiapertura richiede un secondo continuo di osservazione dopo il passaggio da chiuso. Le semiaperture durante la sospensione o fuori esecuzione non vengono ricostruite. Pianificazione del sistema, permessi, interruzioni, ritardi o aperture mancanti possono causare lacune o errori. Non sono garantite esecuzione con blocco, prima dell’avvio, dopo chiusura forzata o copertura completa. Gli eventi mancanti non sono ricostruiti.</li>
 <li>I widget mostrano statistiche salvate. Gli aggiornamenti sono programmati dal sistema; non rilevano autonomamente e non garantiscono aggiornamento immediato dopo ogni movimento.</li>
 </ul>
 <p>Pianificazione, input, spazio, ora di sistema e fuso statistico possono influire su registrazione e visualizzazione. Considera gli avvisi di pausa o sincronizzazione.</p>

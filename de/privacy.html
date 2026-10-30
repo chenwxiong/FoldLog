@@ -41,9 +41,9 @@
       <p class="document-description">Informationen zu lokalen Daten, Freigaben und Websitebesuchen.</p>
       <p class="translation-note">Diese Seite ist eine Referenzübersetzung des chinesischen Originals (vereinfacht). <a href="../privacy.html" lang="zh-Hans">Chinesisches Original</a></p>
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Aktualisiert</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Gültig ab</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Aktualisiert</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Gültig ab</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,9 +64,12 @@
 <tr><td>Einstellungen</td><td>Erscheinungsbild</td><td>Anzeigepräferenzen merken</td></tr>
 <tr><td>Kompatibilität und aktueller Zustand</td><td>Modellkennung, Systemversion, Gerätekategorie, System-Scharnierzustand und monotone Uhr für kurze Intervalle</td><td>Lokale Kompatibilitätsprüfung, Zustandsänderungen und eine durchgehende Sekunde Teilöffnung erkennen</td></tr>
 <tr><td>Widget-Zusammenfassung</td><td>Statistikdatum und Zeitzone, heutige Faltungen, Faltziel, Aktualisierungszeit und nötige Statusmerkmale</td><td>Heutige Faltungen und Restwert auf demselben Gerät zeigen</td></tr>
+<tr><td>Kurzbefehle und lokale Einrichtung</td><td>Ereignisquelle, Schließ-/Öffnungsaktion, Empfangszeit, Ergebnis, zufällige Empfangs-ID und Ereignisverknüpfung, Dublettengrenze, Einführungsstatus und Rückkehrseite</td><td>Lokal zählen, aufeinanderfolgende doppelte Schließungen vermeiden, letzte Eingänge zeigen und Einrichtung fortsetzen</td></tr>
 </tbody></table></div>
 <p>Zufällige Kennungen unterscheiden lokale Einträge. Sie sind keine Werbekennungen und dienen nicht dazu, deine Identität zu bestimmen oder zu verfolgen. Die Modellkennung bezeichnet den Gerätetyp, nicht seine Seriennummer.</p>
-<p>Aktuelle Scharnier- und Zeitinformationen dienen der Beobachtung und Berechnung. Rohdatenfolgen der Scharnierwinkel und rohe Werte der monotonen Uhr werden nicht im Exportarchiv gespeichert. Erfasst werden tatsächlich empfangene und gespeicherte gültige Bewegungen, nach Möglichkeit auch Hintergrundmeldungen. Unterbrechungen und fehlende Eingaben können Lücken hinterlassen; eine vollständige Rekonstruktion des Tages ist nicht möglich.</p>
+<p>Aktuelle Scharnier- und Zeitinformationen dienen der Beobachtung und Berechnung. Rohdatenfolgen der Scharnierwinkel und rohe Werte der monotonen Uhr werden nicht im Exportarchiv gespeichert.</p>
+<p>Nur für iPhone Duo mit iOS 27.1 oder neuer. Nach Einrichtung beider Vorlagen und ihrer Ausführungsoptionen können Kurzbefehle Faltungen auch im Hintergrund erfassen. Gezählt werden nur empfangene und gespeicherte Ereignisse; eine lückenlose Tagesaufzeichnung ist nicht garantiert. Halb- und Ganzöffnung beruhen weiterhin auf gültigen Scharniereingaben, die die App tatsächlich erhält. Eine Halböffnung erfordert nach dem Schließen eine durchgehende Sekunde Beobachtung. Halböffnungen bei unterbrochener oder nicht laufender App werden nicht nachgetragen. Systemplanung, Berechtigungen, Unterbrechungen, Verzögerungen oder fehlende Öffnungsereignisse können Lücken oder Fehlzuordnungen verursachen. Ausführung bei Sperre, vor dem Start, nach erzwungenem Beenden und eine vollständige Tagesabdeckung sind nicht garantiert. Fehlende Ereignisse werden nicht rekonstruiert.</p>
+<p>Aktionen nutzen dasselbe lokale Archiv wie die App und senden nichts an Entwicklerserver. Das Empfangsprotokoll hält bis zu 256 Einträge; ältere Eingänge werden ohne Löschen gespeicherter Zählereignisse entfernt. Auch manuelle oder Siri-Aufrufe können enthalten sein. JSON-Exporte können Quellen, Eingänge, Dubletten- und Einrichtungsstatus enthalten. Das Leeren löscht auch Eingänge und Dublettenstatus, behält Darstellungs- und Einführungseinstellungen und deaktiviert keine Systemautomationen.</p>
 </section>
 <section aria-labelledby="section-03"><h2 id="section-03">03 Speicherung und Verwendung</h2>
 <p>Archive liegen im lokalen App-Speicher, Präferenzen im systemeigenen Einstellungsspeicher der App.</p>
@@ -78,6 +81,7 @@
 <p>Die App fordert keinen Zugriff auf Standort, Kontakte, Fotos, Kamera oder Mikrofon an. Scharnierzustand, Geräteprüfung und Widgets nutzen Systemfunktionen.</p>
 <p>Bei App-Store-Downloads, Updates oder TestFlight kann Apple entsprechend deinen Einstellungen und seinen Richtlinien Kauf-, Verteilungs-, Absturzdiagnose- oder Testinformationen verarbeiten. Freiwilliges Feedback über diese Dienste sowie Diagnose- oder aggregierte Informationen, die Apple Entwicklern bereitstellt, können der Fehlerbehebung und Wartung dienen. Der Umfang richtet sich nach Apples Diensten, Einstellungen und Richtlinien; dies bedeutet nicht, dass die App ein Analyse-SDK Dritter enthält.</p>
 <p>Siehe <a href="https://www.apple.com/legal/privacy/" rel="noreferrer">Apples Datenschutzrichtlinie</a>.</p>
+<p>Beide signierten Vorlagen sind lokale Dateien in der App; ein iCloud-Link ist nicht erforderlich. Import, automatische und gesperrte Ausführung bestätigst du in Kurzbefehle. FoldLog kann Systemschalter weder ändern noch lesen. Du kannst die Vorlagen dort deaktivieren oder löschen; für Systemverarbeitung gelten Apples Regeln.</p>
 </section>
 <section aria-labelledby="section-05"><h2 id="section-05">05 Export und Weitergabe</h2>
 <p>Unter Einstellungen → Daten kannst du JSON exportieren. Die Datei kann Ereignistypen und Zeitpunkte, zufällige Kennungen, Ziele und Gültigkeitsdaten, Archiverstellungsdatum und Statistikzeitzone enthalten.</p>

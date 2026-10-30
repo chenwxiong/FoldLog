@@ -41,9 +41,9 @@
       <p class="document-description">Funciones, uso y gestión de datos de FoldLog.</p>
       <p class="translation-note">Esta página es una traducción de referencia del original en chino simplificado. <a href="../terms.html" lang="zh-Hans">Original en chino</a></p>
       <dl class="metadata">
-        <div><dt>Versión</dt><dd>1.0</dd></div>
-        <div><dt>Actualización</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Entrada en vigor</dt><dd>2026-10-27</dd></div>
+        <div><dt>Versión</dt><dd>1.1</dd></div>
+        <div><dt>Actualización</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Entrada en vigor</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,6 +64,7 @@
 <p>La versión actual se dirige únicamente a iPhone Duo con iOS 27.1 o posterior. Comprueba los requisitos antes de descargar. Las capacidades dependen también de las entradas de bisagra que proporcione realmente el sistema.</p>
 <p>Incluye registros independientes de cierre, apertura parcial y completa, totales diarios y acumulados, historial, límites diarios personales, exportación JSON y widgets de plegados de hoy y saldo.</p>
 <p>No hay actualmente cuentas, nube del desarrollador, suscripciones, compras integradas ni anuncios. El precio de descarga es el mostrado entonces por el App Store.</p>
+<p>Las dos plantillas firmadas son archivos locales incluidos en la app, sin enlace iCloud necesario. Confirmas importación, ejecución automática y con bloqueo en Atajos. FoldLog no puede cambiar ni leer los interruptores del sistema. Puedes desactivarlas o borrarlas allí; el tratamiento del sistema sigue las reglas de Apple.</p>
 </section>
 <section aria-labelledby="section-04"><h2 id="section-04">04 Conteo y cobertura</h2>
 <ul>
@@ -71,7 +72,9 @@
 <li>Pasar de cerrado a parcialmente abierto cuenta después de un segundo continuo; menos no cuenta. Abrir totalmente tras confirmar una apertura parcial añade un evento completo separado.</li>
 <li>Volver de totalmente a parcialmente abierto no añade apertura parcial. Una nueva apertura completa puede añadir otro evento completo. Las notificaciones repetidas no se cuentan dos veces.</li>
 <li>El primer estado de cada observación continua establece la referencia. Un estado recuperado no reconstruye movimientos perdidos.</li>
-<li>Se registran eventos válidos recibidos y guardados, intentando también registrar en segundo plano. La suspensión, el bloqueo, salir de la app o entradas ausentes pueden dejar huecos. No se garantiza cobertura completa del día.</li>
+<li>Solo para iPhone Duo con iOS 27.1 o posterior. Al configurar ambas plantillas y sus opciones, las automatizaciones de Atajos pueden registrar plegados en segundo plano. Solo cuentan los eventos recibidos y guardados; no se garantiza un día completo sin omisiones.</li>
+<li>La acción de cierre suma un plegado cuando la secuencia lo permite. La de apertura recibe un evento y permite contar el siguiente cierre; no suma directamente una apertura total ni parcial. Debes añadir y activar ambas. Los informes de cierre idénticos consecutivos no suman de nuevo.</li>
+<li>Las aperturas parciales y totales siguen dependiendo de entradas válidas de la bisagra que recibe la app. Una apertura parcial requiere un segundo continuo de observación tras pasar de cerrado. No se reconstruyen las parciales durante la suspensión o fuera de ejecución. La programación del sistema, permisos, interrupciones, retrasos o aperturas ausentes pueden causar omisiones o desajustes. No se garantiza ejecución con bloqueo, antes del inicio, tras cierre forzado ni cobertura diaria completa. No se reconstruyen eventos ausentes.</li>
 <li>Los widgets muestran estadísticas guardadas. El sistema programa la actualización; no recogen datos solos ni garantizan actualización inmediata tras cada movimiento.</li>
 </ul>
 <p>La programación del sistema, las entradas, el espacio, la hora y la zona estadística pueden afectar al registro y la pantalla. Ten en cuenta los avisos de pausa y sincronización.</p>

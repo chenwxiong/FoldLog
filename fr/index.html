@@ -41,42 +41,47 @@
       <p class="document-description">Appareils compatibles, questions fréquentes et contact.</p>
 
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Mise à jour</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Entrée en vigueur</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Mise à jour</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Entrée en vigueur</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
-      <aside class="desktop-toc"><nav aria-label="Sommaire"><p class="toc-label">Sommaire</p><ol><li><a href="#section-01">01 Avant de commencer</a></li><li><a href="#section-02">02 Pourquoi une ouverture partielle n’a-t-elle pas été comptée ?</a></li><li><a href="#section-03">03 Quand les objectifs s’appliquent-ils ?</a></li><li><a href="#section-04">04 Pourquoi le widget n’est-il pas encore actualisé ?</a></li><li><a href="#section-05">05 Comment exporter ou effacer les données ?</a></li><li><a href="#section-06">06 Que faire si l’enregistrement est suspendu ?</a></li><li><a href="#section-07">07 Contacter le développeur</a></li></ol><a class="back-top" href="#top">Retour en haut ↑</a></nav></aside>
+      <aside class="desktop-toc"><nav aria-label="Sommaire"><p class="toc-label">Sommaire</p><ol><li><a href="#section-01">01 Avant de commencer</a></li><li><a href="#section-02">02 Comment activer le comptage en arrière-plan ?</a></li><li><a href="#section-03">03 Pourquoi une ouverture partielle n’a-t-elle pas été comptée ?</a></li><li><a href="#section-04">04 Quand les objectifs s’appliquent-ils ?</a></li><li><a href="#section-05">05 Pourquoi le widget n’est-il pas encore actualisé ?</a></li><li><a href="#section-06">06 Comment exporter ou effacer les données ?</a></li><li><a href="#section-07">07 Que faire si l’enregistrement est suspendu ?</a></li><li><a href="#section-08">08 Contacter le développeur</a></li></ol><a class="back-top" href="#top">Retour en haut ↑</a></nav></aside>
       <div class="document-content">
-        <details class="mobile-toc"><summary>Sommaire <span aria-hidden="true">＋</span></summary><nav aria-label="Sommaire"><ol><li><a href="#section-01">01 Avant de commencer</a></li><li><a href="#section-02">02 Pourquoi une ouverture partielle n’a-t-elle pas été comptée ?</a></li><li><a href="#section-03">03 Quand les objectifs s’appliquent-ils ?</a></li><li><a href="#section-04">04 Pourquoi le widget n’est-il pas encore actualisé ?</a></li><li><a href="#section-05">05 Comment exporter ou effacer les données ?</a></li><li><a href="#section-06">06 Que faire si l’enregistrement est suspendu ?</a></li><li><a href="#section-07">07 Contacter le développeur</a></li></ol></nav></details>
+        <details class="mobile-toc"><summary>Sommaire <span aria-hidden="true">＋</span></summary><nav aria-label="Sommaire"><ol><li><a href="#section-01">01 Avant de commencer</a></li><li><a href="#section-02">02 Comment activer le comptage en arrière-plan ?</a></li><li><a href="#section-03">03 Pourquoi une ouverture partielle n’a-t-elle pas été comptée ?</a></li><li><a href="#section-04">04 Quand les objectifs s’appliquent-ils ?</a></li><li><a href="#section-05">05 Pourquoi le widget n’est-il pas encore actualisé ?</a></li><li><a href="#section-06">06 Comment exporter ou effacer les données ?</a></li><li><a href="#section-07">07 Que faire si l’enregistrement est suspendu ?</a></li><li><a href="#section-08">08 Contacter le développeur</a></li></ol></nav></details>
         <article aria-label="Aide et assistance"><p>Notez vos habitudes. Gardez du temps pour vous. Retrouvez les appareils compatibles, la gestion des données et les moyens de nous contacter.</p>
 <section aria-labelledby="section-01"><h2 id="section-01">01 Avant de commencer</h2>
-<p>FoldLog prend actuellement en charge uniquement l’iPhone Duo sous iOS 27.1 ou version ultérieure. Un message de compatibilité sur un autre iPhone ne signifie pas qu’il peut enregistrer les mouvements réels de pliage.</p>
-<p>Les données correspondent aux événements valides effectivement reçus et enregistrés, y compris en arrière-plan lorsque c’est possible. Une suspension, le verrouillage de l’écran ou une interruption des entrées peuvent créer des lacunes. Les mouvements lorsque l’app ne fonctionne pas ne sont pas reconstitués ; un relevé complet de la journée n’est pas garanti. Le premier état après une reprise sert uniquement de référence.</p>
+<p>Uniquement pour iPhone Duo sous iOS 27.1 ou ultérieur. Une fois les deux modèles et leurs options configurés, les automatisations Raccourcis peuvent compter les pliages en arrière-plan. Seuls les événements reçus et enregistrés comptent ; une journée sans lacune n’est pas garantie.</p>
 </section>
-<section aria-labelledby="section-02"><h2 id="section-02">02 Pourquoi une ouverture partielle n’a-t-elle pas été comptée ?</h2>
+<section aria-labelledby="section-02"><h2 id="section-02">02 Comment activer le comptage en arrière-plan ?</h2>
+<p>Ouvrez le comptage automatique depuis l’accueil ou les réglages et ajoutez les deux modèles locaux FoldLogClosed et FoldLogOpened. Choisissez Raccourcis dans le menu système, vérifiez puis confirmez chaque ajout ; aucun lien de partage iCloud n’est nécessaire. Dans chaque raccourci, touchez la flèche près du déclencheur de fermeture ou d’ouverture et activez Automatisation. Si nécessaire, autorisez aussi l’exécution verrouillée dans Détails → Confidentialité. Les noms et la disponibilité dépendent du système.</p>
+<p>L’action de fermeture ajoute un pliage lorsque la séquence le permet. L’action d’ouverture reçoit un événement et permet de compter la fermeture suivante ; elle n’ajoute directement ni ouverture complète ni semi-ouverture. Ajoutez et activez les deux modèles. Les signalements de fermeture identiques consécutifs ne sont pas comptés à nouveau.</p>
+<p>Les semi-ouvertures et ouvertures complètes reposent toujours sur les données valides de charnière réellement reçues par l’app. Une semi-ouverture exige une seconde continue d’observation après l’état fermé. Celles survenues pendant une suspension ou hors exécution ne sont pas reconstituées. Planification système, permissions, interruptions, retards ou événements d’ouverture manquants peuvent entraîner des lacunes ou erreurs. L’exécution verrouillée, avant lancement, après fermeture forcée et la couverture complète ne sont pas garanties. Les événements manquants ne sont pas reconstitués.</p>
+<p>Vérifiez les deux modèles, leur automatisation et leur autorisation sous verrouillage. Les enregistrements récents de la page de comptage affichent les heures de réception. Revenir dans l’app ou confirmer la fin ne vérifie pas les réglages système. Une action peut aussi être manuelle ou lancée par Siri ; sa réception ne prouve pas un pliage physique. Les widgets affichent les statistiques enregistrées selon le calendrier système.</p>
+</section>
+<section aria-labelledby="section-03"><h2 id="section-03">03 Pourquoi une ouverture partielle n’a-t-elle pas été comptée ?</h2>
 <p>Après le passage de fermé à partiellement ouvert, cet état doit durer une seconde d’observation continue. Un passage bref ne compte pas. Revenir de complètement ouvert à partiellement ouvert n’ajoute rien au compteur partiel. Une ouverture complète après une ouverture partielle confirmée est comptée séparément.</p>
 <p>Fermeture, ouverture partielle et ouverture complète sont trois compteurs indépendants. Additionner les deux derniers ne donne pas un total d’ouvertures fondé sur un même critère.</p>
 </section>
-<section aria-labelledby="section-03"><h2 id="section-03">03 Quand les objectifs s’appliquent-ils ?</h2>
+<section aria-labelledby="section-04"><h2 id="section-04">04 Quand les objectifs s’appliquent-ils ?</h2>
 <p>Dans Réglages → Objectifs quotidiens, fixez une limite pour chaque compteur. Un premier objectif peut s’appliquer aujourd’hui ; les modifications ultérieures prennent normalement effet demain. Vérifiez la date avant de sauvegarder. La désactivation est immédiate.</p>
 <p>Le comptage continue au-delà de la limite ; le solde ne descend pas sous zéro. Les objectifs aident à gérer vos habitudes, sans verrouiller l’appareil ni bloquer d’autres apps. Les compteurs ne mesurent ni les plis ni la durée de vie du matériel.</p>
 </section>
-<section aria-labelledby="section-04"><h2 id="section-04">04 Pourquoi le widget n’est-il pas encore actualisé ?</h2>
+<section aria-labelledby="section-05"><h2 id="section-05">05 Pourquoi le widget n’est-il pas encore actualisé ?</h2>
 <p>Les widgets montrent les pliages du jour et le solde déjà enregistrés. Le système planifie leur actualisation. Ils ne collectent pas eux-mêmes de mouvements et ne comblent pas les événements manqués en arrière-plan.</p>
 <p>Ouvrez FoldLog pour vérifier les données et l’état de l’enregistrement. Si les réglages signalent une erreur, relancez la synchronisation des widgets. Sans objectif, le solde est « — ».</p>
 </section>
-<section aria-labelledby="section-05"><h2 id="section-05">05 Comment exporter ou effacer les données ?</h2>
+<section aria-labelledby="section-06"><h2 id="section-06">06 Comment exporter ou effacer les données ?</h2>
 <p>Dans Réglages → Données, exportez un fichier JSON ou effacez les relevés. L’effacement réinitialise les compteurs, l’historique et les objectifs dans le périmètre indiqué par la confirmation. Les préférences d’apparence ne sont pas réinitialisées en même temps.</p>
 <p>L’effacement ne peut pas être annulé dans l’app et ne supprime pas les copies déjà exportées ou partagées. La version actuelle ne permet pas de restauration par import JSON. Exportez et conservez vous-même les fichiers souhaités.</p>
 <p>Retirer un widget n’efface pas les données. Leur conservation par une sauvegarde ou un transfert dépend du système, de ses réglages et du traitement réel.</p>
 </section>
-<section aria-labelledby="section-06"><h2 id="section-06">06 Que faire si l’enregistrement est suspendu ?</h2>
+<section aria-labelledby="section-07"><h2 id="section-07">07 Que faire si l’enregistrement est suspendu ?</h2>
 <p>En cas d’échec de lecture ou d’écriture, vérifiez l’espace libre et utilisez l’action de réessai de l’app. Lors d’un problème de lecture, le fichier d’origine est préservé et l’enregistrement suspendu.</p>
 <p>Ne supprimez pas l’app ou ses données simplement pour rechercher une panne : vous pourriez perdre un historique conservé uniquement sur l’appareil. Si le problème persiste, contactez-nous.</p>
 </section>
-<section aria-labelledby="section-07"><h2 id="section-07">07 Contacter le développeur</h2>
+<section aria-labelledby="section-08"><h2 id="section-08">08 Contacter le développeur</h2>
 <p>E-mail : <a href="mailto:chenwxiong@gmail.com">chenwxiong@gmail.com</a>. Fournisseur : le développeur indépendant de FoldLog.</p>
 <p>Indiquez les versions de l’app et d’iOS, le modèle, l’heure du problème et les étapes de reproduction. Masquez les informations personnelles sans rapport sur les captures. Les mots de passe et l’archive complète ne sont pas nécessaires.</p>
 <p>Consultez les <a href="terms.html">Conditions d’utilisation</a> et la <a href="privacy.html">Politique de confidentialité</a>.</p>

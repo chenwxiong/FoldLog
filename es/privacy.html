@@ -41,9 +41,9 @@
       <p class="document-description">Tratamiento de registros locales, archivos compartidos y visitas al sitio.</p>
       <p class="translation-note">Esta página es una traducción de referencia del original en chino simplificado. <a href="../privacy.html" lang="zh-Hans">Original en chino</a></p>
       <dl class="metadata">
-        <div><dt>Versión</dt><dd>1.0</dd></div>
-        <div><dt>Actualización</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Entrada en vigor</dt><dd>2026-10-27</dd></div>
+        <div><dt>Versión</dt><dd>1.1</dd></div>
+        <div><dt>Actualización</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Entrada en vigor</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,9 +64,12 @@
 <tr><td>Preferencias</td><td>Apariencia</td><td>Recordar opciones de visualización</td></tr>
 <tr><td>Compatibilidad y estado actual</td><td>Identificador de modelo, versión del sistema, categoría de dispositivo, estado de bisagra del sistema y reloj monótono para intervalos breves</td><td>Comprobar compatibilidad local, detectar cambios y confirmar un segundo continuo de apertura parcial</td></tr>
 <tr><td>Resumen del widget</td><td>Fecha y zona estadística, plegados de hoy, objetivo, hora de actualización e indicadores necesarios</td><td>Mostrar los plegados de hoy y el saldo en el mismo dispositivo</td></tr>
+<tr><td>Atajos y configuración local</td><td>Fuente, acción de cierre/apertura, hora y resultado, ID aleatorio de recepción y evento vinculado, límite de deduplicación, guía completada y página de retorno</td><td>Contar localmente, evitar cierres repetidos consecutivos, mostrar recepciones y reanudar la configuración</td></tr>
 </tbody></table></div>
 <p>Los identificadores aleatorios distinguen entradas locales; no son identificadores publicitarios ni sirven para identificarte o rastrearte. El identificador del modelo representa un modelo, no un número de serie.</p>
-<p>El estado y el tiempo se usan durante la observación y el cálculo. No se guardan secuencias de ángulos de bisagra sin procesar ni valores brutos del reloj monótono en los archivos exportados. La app registra movimientos válidos recibidos y guardados, también en segundo plano cuando es posible. La suspensión o la falta de entradas pueden crear huecos; no se puede reconstruir toda la actividad diaria.</p>
+<p>El estado y el tiempo se usan durante la observación y el cálculo. No se guardan secuencias de ángulos de bisagra sin procesar ni valores brutos del reloj monótono en los archivos exportados.</p>
+<p>Solo para iPhone Duo con iOS 27.1 o posterior. Al configurar ambas plantillas y sus opciones, las automatizaciones de Atajos pueden registrar plegados en segundo plano. Solo cuentan los eventos recibidos y guardados; no se garantiza un día completo sin omisiones. Las aperturas parciales y totales siguen dependiendo de entradas válidas de la bisagra que recibe la app. Una apertura parcial requiere un segundo continuo de observación tras pasar de cerrado. No se reconstruyen las parciales durante la suspensión o fuera de ejecución. La programación del sistema, permisos, interrupciones, retrasos o aperturas ausentes pueden causar omisiones o desajustes. No se garantiza ejecución con bloqueo, antes del inicio, tras cierre forzado ni cobertura diaria completa. No se reconstruyen eventos ausentes.</p>
+<p>Las acciones usan el mismo archivo local que la app y no envían datos al servidor del desarrollador. El registro conserva hasta 256 recepciones; quitar las antiguas no borra eventos contados. Puede incluir llamadas manuales o de Siri. El JSON puede incluir fuentes, recepciones, deduplicación y estado de la guía. Borrar registros elimina también recepciones y deduplicación, mantiene preferencias de aspecto y guía y no desactiva automatizaciones del sistema.</p>
 </section>
 <section aria-labelledby="section-03"><h2 id="section-03">03 Almacenamiento y uso</h2>
 <p>Los archivos están en el almacenamiento local de la app y las preferencias en el almacén de ajustes del sistema.</p>
@@ -78,6 +81,7 @@
 <p>No se solicita acceso a ubicación, contactos, fotos, cámara o micrófono. La bisagra, la comprobación de compatibilidad y los widgets utilizan funciones del sistema.</p>
 <p>Al descargar, actualizar o usar TestFlight, Apple puede procesar información de compras, distribución, fallos o pruebas según tus ajustes y sus políticas. Los comentarios que envíes y los datos de diagnóstico o agregados que Apple facilite al desarrollador pueden utilizarse para resolver problemas y mantener la app. El alcance depende de los servicios, ajustes y políticas de Apple y no significa que la app incorpore un SDK de análisis de terceros.</p>
 <p>Consulta la <a href="https://www.apple.com/legal/privacy/" rel="noreferrer">Política de privacidad de Apple</a>.</p>
+<p>Las dos plantillas firmadas son archivos locales incluidos en la app, sin enlace iCloud necesario. Confirmas importación, ejecución automática y con bloqueo en Atajos. FoldLog no puede cambiar ni leer los interruptores del sistema. Puedes desactivarlas o borrarlas allí; el tratamiento del sistema sigue las reglas de Apple.</p>
 </section>
 <section aria-labelledby="section-05"><h2 id="section-05">05 Exportación y uso compartido</h2>
 <p>En Ajustes → Datos puedes exportar JSON con tipos y horas de eventos, identificadores aleatorios, objetivos y fechas de aplicación, fecha de creación y zona horaria del archivo.</p>

@@ -41,9 +41,9 @@
       <p class="document-description">Fonctions, utilisation et gestion des données de FoldLog.</p>
       <p class="translation-note">Cette page est une traduction de référence de l’original en chinois simplifié. <a href="../terms.html" lang="zh-Hans">Original chinois</a></p>
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Mise à jour</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Entrée en vigueur</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Mise à jour</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Entrée en vigueur</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,6 +64,7 @@
 <p>La version actuelle vise uniquement l’iPhone Duo sous iOS 27.1 ou ultérieur. Vérifiez ces exigences avant de télécharger. Les capacités dépendent aussi des entrées de charnière effectivement fournies par le système.</p>
 <p>L’app propose des compteurs indépendants de fermeture, ouverture partielle et complète, des totaux quotidiens et cumulés, un historique, des limites personnelles par jour, l’export JSON et des widgets de pliages du jour et de solde.</p>
 <p>Il n’y a actuellement ni compte, cloud du développeur, abonnement, achat intégré ou publicité. Le prix de téléchargement est celui affiché sur l’App Store au moment concerné.</p>
+<p>Les deux modèles signés sont des fichiers locaux fournis avec l’app, sans lien iCloud requis. Vous confirmez importation, exécution automatique et verrouillée dans Raccourcis. FoldLog ne peut ni modifier ni lire les interrupteurs système. Vous pouvez les désactiver ou supprimer dans Raccourcis ; les règles Apple s’appliquent au traitement système.</p>
 </section>
 <section aria-labelledby="section-04"><h2 id="section-04">04 Comptage et couverture</h2>
 <ul>
@@ -71,7 +72,9 @@
 <li>Le passage de fermé à partiellement ouvert exige une seconde continue pour compter ; moins d’une seconde ne compte pas. Une ouverture complète après confirmation partielle ajoute un événement distinct.</li>
 <li>Revenir de complètement à partiellement ouvert n’ajoute pas d’ouverture partielle. Une nouvelle ouverture complète peut ajouter un événement complet. Les notifications répétées ne sont pas comptées en double.</li>
 <li>Le premier état de chaque observation continue sert de référence. Un état retrouvé ne reconstitue pas les mouvements manqués.</li>
-<li>Seuls les événements valides reçus et sauvegardés sont enregistrés, avec tentative en arrière-plan. Suspension, verrouillage, fermeture de l’app ou absence d’entrée peuvent créer des lacunes. Une couverture complète de la journée n’est pas garantie.</li>
+<li>Uniquement pour iPhone Duo sous iOS 27.1 ou ultérieur. Une fois les deux modèles et leurs options configurés, les automatisations Raccourcis peuvent compter les pliages en arrière-plan. Seuls les événements reçus et enregistrés comptent ; une journée sans lacune n’est pas garantie.</li>
+<li>L’action de fermeture ajoute un pliage lorsque la séquence le permet. L’action d’ouverture reçoit un événement et permet de compter la fermeture suivante ; elle n’ajoute directement ni ouverture complète ni semi-ouverture. Ajoutez et activez les deux modèles. Les signalements de fermeture identiques consécutifs ne sont pas comptés à nouveau.</li>
+<li>Les semi-ouvertures et ouvertures complètes reposent toujours sur les données valides de charnière réellement reçues par l’app. Une semi-ouverture exige une seconde continue d’observation après l’état fermé. Celles survenues pendant une suspension ou hors exécution ne sont pas reconstituées. Planification système, permissions, interruptions, retards ou événements d’ouverture manquants peuvent entraîner des lacunes ou erreurs. L’exécution verrouillée, avant lancement, après fermeture forcée et la couverture complète ne sont pas garanties. Les événements manquants ne sont pas reconstitués.</li>
 <li>Les widgets montrent les données sauvegardées. Le système décide des actualisations ; ils ne collectent pas eux-mêmes et ne garantissent pas une mise à jour immédiate après chaque mouvement.</li>
 </ul>
 <p>Planification du système, entrées, stockage, heure et fuseau statistique influencent l’enregistrement et l’affichage. Tenez compte des messages de pause et de synchronisation.</p>

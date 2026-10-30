@@ -41,9 +41,9 @@
       <p class="document-description">Regeln zu Funktionen, Nutzung und Datenverwaltung.</p>
       <p class="translation-note">Diese Seite ist eine Referenzübersetzung des chinesischen Originals (vereinfacht). <a href="../terms.html" lang="zh-Hans">Chinesisches Original</a></p>
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Aktualisiert</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Gültig ab</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Aktualisiert</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Gültig ab</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,6 +64,7 @@
 <p>Die aktuelle Version richtet sich ausschließlich an iPhone Duo mit iOS 27.1 oder neuer. Prüfe Anforderungen vor dem Download. Funktionen hängen auch von tatsächlich verfügbaren System-Scharnierdaten ab.</p>
 <p>Die App bietet getrennte Zähler für Schließen, teilweises und vollständiges Öffnen, Tages- und Gesamtsummen, Verlauf, persönliche Tagesgrenzen, JSON-Export und Widgets für heutige Faltungen und Restwert.</p>
 <p>Derzeit gibt es keine Konten, Entwickler-Cloud-Synchronisierung, Abonnements, In-App-Käufe oder Werbung. Ein Downloadpreis entspricht der aktuellen Anzeige im App Store.</p>
+<p>Beide signierten Vorlagen sind lokale Dateien in der App; ein iCloud-Link ist nicht erforderlich. Import, automatische und gesperrte Ausführung bestätigst du in Kurzbefehle. FoldLog kann Systemschalter weder ändern noch lesen. Du kannst die Vorlagen dort deaktivieren oder löschen; für Systemverarbeitung gelten Apples Regeln.</p>
 </section>
 <section aria-labelledby="section-04"><h2 id="section-04">04 Zählung und Abdeckung</h2>
 <ul>
@@ -71,7 +72,9 @@
 <li>Von geschlossen zu teilweise geöffnet zählt erst nach einer durchgehenden Sekunde; kürzere Intervalle zählen nicht. Anschließendes vollständiges Öffnen wird zusätzlich separat gezählt.</li>
 <li>Von vollständig zu teilweise geöffnet erhöht den Teilöffnungszähler nicht. Erneutes vollständiges Öffnen kann ihn im Vollöffnungszähler erhöhen. Wiederholte Zustandsmeldungen werden nicht doppelt gezählt.</li>
 <li>Der erste Zustand jeder ununterbrochenen Beobachtung setzt nur den Ausgangspunkt. Ein wiederhergestellter Zustand ergänzt keine verpassten Bewegungen.</li>
-<li>Erfasst werden empfangene und gespeicherte gültige Ereignisse, nach Möglichkeit auch im Hintergrund. Unterbrechung, Sperrbildschirm, App-Ende oder fehlende Eingaben können Lücken verursachen. Eine lückenlose Tagesaufzeichnung wird nicht garantiert.</li>
+<li>Nur für iPhone Duo mit iOS 27.1 oder neuer. Nach Einrichtung beider Vorlagen und ihrer Ausführungsoptionen können Kurzbefehle Faltungen auch im Hintergrund erfassen. Gezählt werden nur empfangene und gespeicherte Ereignisse; eine lückenlose Tagesaufzeichnung ist nicht garantiert.</li>
+<li>Die Schließaktion erhöht bei passender Übergangsfolge die Faltungen. Die Öffnungsaktion empfängt ein Ereignis und ermöglicht die nächste Schließzählung; sie erhöht weder Ganz offen noch Halb offen direkt. Beide Vorlagen müssen hinzugefügt und aktiviert sein. Aufeinanderfolgende doppelte Schließmeldungen erhöhen den Zähler nicht zusätzlich.</li>
+<li>Halb- und Ganzöffnung beruhen weiterhin auf gültigen Scharniereingaben, die die App tatsächlich erhält. Eine Halböffnung erfordert nach dem Schließen eine durchgehende Sekunde Beobachtung. Halböffnungen bei unterbrochener oder nicht laufender App werden nicht nachgetragen. Systemplanung, Berechtigungen, Unterbrechungen, Verzögerungen oder fehlende Öffnungsereignisse können Lücken oder Fehlzuordnungen verursachen. Ausführung bei Sperre, vor dem Start, nach erzwungenem Beenden und eine vollständige Tagesabdeckung sind nicht garantiert. Fehlende Ereignisse werden nicht rekonstruiert.</li>
 <li>Widgets zeigen gespeicherte Werte. Das System plant Aktualisierungen; Widgets erfassen nicht selbst und garantieren keine sofortige Aktualisierung nach jeder Bewegung.</li>
 </ul>
 <p>Systemplanung, Eingaben, Speicher, Uhrzeit und Statistikzeitzone können Aufzeichnung und Anzeige beeinflussen. Beachte Pausen- und Synchronisierungshinweise.</p>

@@ -41,9 +41,9 @@
       <p class="document-description">How local records, voluntary sharing, and website visits are handled.</p>
       <p class="translation-note">This page is a reference translation of the Simplified Chinese original. <a href="../privacy.html" lang="zh-Hans">Chinese original</a></p>
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Updated</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Effective</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Updated</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Effective</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,9 +64,12 @@
 <tr><td>Preferences</td><td>Appearance settings</td><td>Remember your display choices</td></tr>
 <tr><td>Compatibility and live state</td><td>Model identifier, system version, device category, system-provided hinge state, and a monotonic clock for short intervals</td><td>Check compatibility locally, detect changes, and confirm one continuous second of partial opening</td></tr>
 <tr><td>Widget summary</td><td>Statistics date and time zone, folds today, fold goal, update time, and necessary recording-state markers</td><td>Show folds today and the remaining allowance on the same device</td></tr>
+<tr><td>Shortcuts and local setup</td><td>Event source; close/open action, receipt time, result, random receipt ID and linked event ID; deduplication boundary, onboarding completion and pending return page</td><td>Save automated counts locally, avoid consecutive duplicate closes, show recent receipts and resume setup</td></tr>
 </tbody></table></div>
 <p>Random event and goal identifiers distinguish local entries. They are not advertising identifiers and do not identify or track your real identity. A model identifier describes a device model, not its serial number.</p>
-<p>Live hinge state and timing data are used during observation and calculation. The app does not save raw hinge-angle sequences or raw monotonic-clock values in exported archives. It records valid movements actually received and successfully saved, including background callbacks when available. Suspension or missing input can leave gaps; these records cannot reconstruct all device activity throughout the day.</p>
+<p>Live hinge state and timing data are used during observation and calculation. The app does not save raw hinge-angle sequences or raw monotonic-clock values in exported archives.</p>
+<p>Only for iPhone Duo with iOS 27.1 or later. After setting up both presets and their run options, Shortcuts automations can record folds while FoldLog is in the background. Only events actually received and saved count; complete all-day coverage is not guaranteed. Half-open and fully open counts still depend on valid hinge input actually received by the app. A half-open event requires one continuous second of observation after moving from closed; half openings during suspension or while the app is not running are not reconstructed. System scheduling, permissions, interruptions, delayed actions or missing opening events may cause gaps or mismatches. Execution while locked, before launch, after force quit, and complete all-day coverage are not guaranteed. Missing events are not reconstructed.</p>
+<p>Shortcuts actions use the same local archive as the app and send no data to a developer server. The receipt log retains up to 256 entries; older receipts are removed without deleting saved count events. Actions may also be run manually or through Siri. JSON exports may include event sources, receipts, deduplication and setup state. Clearing records also clears receipts and deduplication state, while keeping appearance and shortcut-onboarding preferences. It does not disable system automations.</p>
 </section>
 <section aria-labelledby="section-03"><h2 id="section-03">03 Storage and use</h2>
 <p>Record archives are kept in the app’s local storage. Preferences use the system’s app settings storage.</p>
@@ -78,6 +81,7 @@
 <p>The app does not request your location, contacts, photos, camera, or microphone. Hinge state, compatibility checks, and widgets use system capabilities.</p>
 <p>When downloading, updating, or using TestFlight, Apple may process purchase, distribution, crash-diagnostic, or testing information according to your settings and its policies. Feedback you submit through those services, and diagnostic or aggregate information Apple makes available to developers, may be used to resolve problems and maintain the app. The scope depends on Apple’s services, settings, and policies; it does not mean the app includes a third-party analytics SDK.</p>
 <p>See <a href="https://www.apple.com/legal/privacy/" rel="noreferrer">Apple’s Privacy Policy</a>.</p>
+<p>Both signed presets are bundled local files; no iCloud sharing link is required. You confirm import, automatic execution and locked-device execution in system Shortcuts. FoldLog cannot change or read the system automation switches. You can disable or delete them in Shortcuts; Apple’s rules govern that system processing.</p>
 </section>
 <section aria-labelledby="section-05"><h2 id="section-05">05 Export and sharing</h2>
 <p>You can export JSON records under Settings → Data. An export may include event types and times, random entry identifiers, goals and effective dates, the archive creation date, and its statistics time zone.</p>

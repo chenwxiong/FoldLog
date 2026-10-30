@@ -41,9 +41,9 @@
       <p class="document-description">FoldLog functions, use, and data management rules.</p>
       <p class="translation-note">This page is a reference translation of the Simplified Chinese original. <a href="../terms.html" lang="zh-Hans">Chinese original</a></p>
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Updated</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Effective</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Updated</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Effective</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,6 +64,7 @@
 <p>The current version targets iPhone Duo running iOS 27.1 or later. Check device and system requirements before downloading. Capabilities also depend on hinge input actually provided by the system.</p>
 <p>The app offers independent closed, partially open, and fully open records; daily and lifetime totals; history; personal daily limits; local JSON export; and widgets showing folds today and the remaining allowance.</p>
 <p>The app currently has no accounts, developer-operated cloud synchronization, subscriptions, in-app purchases, or advertising. Any download price is the price displayed by the App Store at that time.</p>
+<p>Both signed presets are bundled local files; no iCloud sharing link is required. You confirm import, automatic execution and locked-device execution in system Shortcuts. FoldLog cannot change or read the system automation switches. You can disable or delete them in Shortcuts; Apple’s rules govern that system processing.</p>
 </section>
 <section aria-labelledby="section-04"><h2 id="section-04">04 Counting and coverage</h2>
 <ul>
@@ -71,7 +72,9 @@
 <li>Moving from closed to partially open counts once only after one continuous second. A shorter interval does not count. Fully opening after a confirmed partial opening adds a separate fully open event.</li>
 <li>Returning from fully open to partially open adds no partially open event. Fully opening again can add another fully open event. Repeated state callbacks do not duplicate counts.</li>
 <li>The first state in each continuous observation establishes a baseline. A recovered state cannot reconstruct movements missed during an interruption.</li>
-<li>Records reflect valid events actually received and saved. The app also attempts to record background callbacks. Suspension, Lock Screen use, app exit, or missing input may leave gaps. Complete day-long coverage is not guaranteed.</li>
+<li>Only for iPhone Duo with iOS 27.1 or later. After setting up both presets and their run options, Shortcuts automations can record folds while FoldLog is in the background. Only events actually received and saved count; complete all-day coverage is not guaranteed.</li>
+<li>The close action adds a fold when the transition sequence permits it. The open action receives an opening event and allows the next close to count; it does not directly add a fully open or half-open count. Add and enable both presets. Consecutive duplicate close reports do not add extra counts.</li>
+<li>Half-open and fully open counts still depend on valid hinge input actually received by the app. A half-open event requires one continuous second of observation after moving from closed; half openings during suspension or while the app is not running are not reconstructed. System scheduling, permissions, interruptions, delayed actions or missing opening events may cause gaps or mismatches. Execution while locked, before launch, after force quit, and complete all-day coverage are not guaranteed. Missing events are not reconstructed.</li>
 <li>Widgets display saved statistics. The system schedules refreshes; widgets do not collect movements independently or guarantee an immediate update after each movement.</li>
 </ul>
 <p>System scheduling, input availability, storage space, system time, and the statistics time zone may affect recording and display. Consider the app’s pause and synchronization messages when interpreting results.</p>

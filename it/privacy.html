@@ -41,9 +41,9 @@
       <p class="document-description">Trattamento dei dati locali, delle condivisioni e delle visite al sito.</p>
       <p class="translation-note">Questa pagina è una traduzione di riferimento dell’originale in cinese semplificato. <a href="../privacy.html" lang="zh-Hans">Originale cinese</a></p>
       <dl class="metadata">
-        <div><dt>Versione</dt><dd>1.0</dd></div>
-        <div><dt>Aggiornamento</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>In vigore dal</dt><dd>2026-10-27</dd></div>
+        <div><dt>Versione</dt><dd>1.1</dd></div>
+        <div><dt>Aggiornamento</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>In vigore dal</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,9 +64,12 @@
 <tr><td>Preferenze</td><td>Aspetto</td><td>Ricordare le scelte di visualizzazione</td></tr>
 <tr><td>Compatibilità e stato attuale</td><td>Identificativo del modello, versione di sistema, categoria, stato della cerniera fornito dal sistema e orologio monotono per brevi intervalli</td><td>Verifica locale, rilevamento dei cambiamenti, conferma di un secondo continuo di apertura parziale</td></tr>
 <tr><td>Riepilogo dei widget</td><td>Data e fuso statistico, piegature odierne, obiettivo, ora di aggiornamento e indicatori necessari</td><td>Mostrare piegature e residuo sullo stesso dispositivo</td></tr>
+<tr><td>Comandi Rapidi e impostazioni locali</td><td>Origine, azione di chiusura/apertura, orario e risultato, ID casuale di ricezione ed evento collegato, limite di deduplicazione, guida completata e pagina di ritorno</td><td>Contare localmente, evitare chiusure duplicate consecutive, mostrare ricezioni e riprendere la configurazione</td></tr>
 </tbody></table></div>
 <p>Gli identificativi casuali distinguono le voci locali. Non sono identificativi pubblicitari e non servono a identificarti o tracciarti. Il codice del modello indica il modello, non il numero di serie.</p>
-<p>Stato e tempi servono all’osservazione e al calcolo. L’app non conserva sequenze grezze di angoli della cerniera o valori grezzi dell’orologio monotono negli archivi esportati. Registra eventi validi ricevuti e salvati, anche in background quando possibile. Sospensioni o input mancanti possono lasciare lacune: non consentono di ricostruire tutta l’attività quotidiana.</p>
+<p>Stato e tempi servono all’osservazione e al calcolo. L’app non conserva sequenze grezze di angoli della cerniera o valori grezzi dell’orologio monotono negli archivi esportati.</p>
+<p>Solo per iPhone Duo con iOS 27.1 o successivo. Configurando entrambi i modelli e le opzioni di esecuzione, le automazioni di Comandi Rapidi possono registrare le chiusure in background. Contano solo gli eventi ricevuti e salvati; non è garantita una giornata senza lacune. Le aperture parziali e complete dipendono ancora dai dati validi della cerniera ricevuti dall’app. La semiapertura richiede un secondo continuo di osservazione dopo il passaggio da chiuso. Le semiaperture durante la sospensione o fuori esecuzione non vengono ricostruite. Pianificazione del sistema, permessi, interruzioni, ritardi o aperture mancanti possono causare lacune o errori. Non sono garantite esecuzione con blocco, prima dell’avvio, dopo chiusura forzata o copertura completa. Gli eventi mancanti non sono ricostruiti.</p>
+<p>Le azioni usano lo stesso archivio locale dell’app e non inviano dati al server dello sviluppatore. Il registro conserva fino a 256 ricezioni; rimuovere le più vecchie non elimina gli eventi conteggiati. Può includere chiamate manuali o Siri. Il JSON può contenere origini, ricezioni, deduplicazione e stato della guida. Cancellare i dati elimina anche ricezioni e deduplicazione, mantiene preferenze di aspetto e guida e non disattiva automazioni del sistema.</p>
 </section>
 <section aria-labelledby="section-03"><h2 id="section-03">03 Conservazione e utilizzo</h2>
 <p>Gli archivi risiedono nello spazio locale dell’app; le preferenze nell’archivio delle impostazioni di sistema.</p>
@@ -78,6 +81,7 @@
 <p>Non vengono richiesti posizione, contatti, foto, fotocamera o microfono. Cerniera, compatibilità e widget usano capacità del sistema.</p>
 <p>Download, aggiornamenti e TestFlight possono comportare trattamenti Apple di acquisti, distribuzione, diagnostica dei crash o test secondo impostazioni e politiche applicabili. I feedback inviati e i dati diagnostici o aggregati resi disponibili agli sviluppatori possono servire a risolvere problemi e mantenere l’app. L’ambito dipende da servizi, impostazioni e politiche Apple; non significa che l’app integri un SDK di analisi di terzi.</p>
 <p>Vedi l’<a href="https://www.apple.com/legal/privacy/" rel="noreferrer">Informativa sulla privacy di Apple</a>.</p>
+<p>I due modelli firmati sono file locali inclusi nell’app, senza link iCloud necessario. Confermi importazione, esecuzione automatica e con blocco in Comandi Rapidi. FoldLog non può leggere o modificare gli interruttori del sistema. Puoi disattivarli o eliminarli lì; al trattamento di sistema si applicano le regole Apple.</p>
 </section>
 <section aria-labelledby="section-05"><h2 id="section-05">05 Esportazione e condivisione</h2>
 <p>In Impostazioni → Dati puoi esportare JSON con tipi e orari degli eventi, identificativi casuali, obiettivi e date di efficacia, creazione dell’archivio e fuso statistico.</p>

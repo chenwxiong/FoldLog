@@ -41,42 +41,47 @@
       <p class="document-description">Dispositivos compatibles, preguntas frecuentes y contacto.</p>
 
       <dl class="metadata">
-        <div><dt>Versión</dt><dd>1.0</dd></div>
-        <div><dt>Actualización</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Entrada en vigor</dt><dd>2026-10-27</dd></div>
+        <div><dt>Versión</dt><dd>1.1</dd></div>
+        <div><dt>Actualización</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Entrada en vigor</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
-      <aside class="desktop-toc"><nav aria-label="Contenido"><p class="toc-label">Contenido</p><ol><li><a href="#section-01">01 Antes de empezar</a></li><li><a href="#section-02">02 ¿Por qué no se contó una apertura parcial?</a></li><li><a href="#section-03">03 ¿Cuándo se aplican los objetivos diarios?</a></li><li><a href="#section-04">04 ¿Por qué no se ha actualizado el widget?</a></li><li><a href="#section-05">05 ¿Cómo exporto o borro datos?</a></li><li><a href="#section-06">06 ¿Qué hago si el registro está pausado?</a></li><li><a href="#section-07">07 Contactar al desarrollador</a></li></ol><a class="back-top" href="#top">Volver arriba ↑</a></nav></aside>
+      <aside class="desktop-toc"><nav aria-label="Contenido"><p class="toc-label">Contenido</p><ol><li><a href="#section-01">01 Antes de empezar</a></li><li><a href="#section-02">02 ¿Cómo activo el conteo en segundo plano?</a></li><li><a href="#section-03">03 ¿Por qué no se contó una apertura parcial?</a></li><li><a href="#section-04">04 ¿Cuándo se aplican los objetivos diarios?</a></li><li><a href="#section-05">05 ¿Por qué no se ha actualizado el widget?</a></li><li><a href="#section-06">06 ¿Cómo exporto o borro datos?</a></li><li><a href="#section-07">07 ¿Qué hago si el registro está pausado?</a></li><li><a href="#section-08">08 Contactar al desarrollador</a></li></ol><a class="back-top" href="#top">Volver arriba ↑</a></nav></aside>
       <div class="document-content">
-        <details class="mobile-toc"><summary>Contenido <span aria-hidden="true">＋</span></summary><nav aria-label="Contenido"><ol><li><a href="#section-01">01 Antes de empezar</a></li><li><a href="#section-02">02 ¿Por qué no se contó una apertura parcial?</a></li><li><a href="#section-03">03 ¿Cuándo se aplican los objetivos diarios?</a></li><li><a href="#section-04">04 ¿Por qué no se ha actualizado el widget?</a></li><li><a href="#section-05">05 ¿Cómo exporto o borro datos?</a></li><li><a href="#section-06">06 ¿Qué hago si el registro está pausado?</a></li><li><a href="#section-07">07 Contactar al desarrollador</a></li></ol></nav></details>
+        <details class="mobile-toc"><summary>Contenido <span aria-hidden="true">＋</span></summary><nav aria-label="Contenido"><ol><li><a href="#section-01">01 Antes de empezar</a></li><li><a href="#section-02">02 ¿Cómo activo el conteo en segundo plano?</a></li><li><a href="#section-03">03 ¿Por qué no se contó una apertura parcial?</a></li><li><a href="#section-04">04 ¿Cuándo se aplican los objetivos diarios?</a></li><li><a href="#section-05">05 ¿Por qué no se ha actualizado el widget?</a></li><li><a href="#section-06">06 ¿Cómo exporto o borro datos?</a></li><li><a href="#section-07">07 ¿Qué hago si el registro está pausado?</a></li><li><a href="#section-08">08 Contactar al desarrollador</a></li></ol></nav></details>
         <article aria-label="Ayuda y soporte"><p>Registra tus hábitos. Reserva tiempo para ti. Aquí encontrarás los requisitos, los controles de datos y cómo pedir ayuda.</p>
 <section aria-labelledby="section-01"><h2 id="section-01">01 Antes de empezar</h2>
-<p>FoldLog solo admite actualmente iPhone Duo con iOS 27.1 o posterior. Un aviso de compatibilidad en otro iPhone no significa que pueda registrar movimientos reales de plegado.</p>
-<p>Los registros reflejan eventos válidos recibidos y guardados correctamente, también en segundo plano cuando sea posible. La suspensión, el bloqueo de pantalla o la falta de entradas pueden dejar huecos. No se reconstruyen movimientos cuando la app no está funcionando ni se garantiza un registro completo del día. El primer estado tras reanudar la observación solo establece una referencia.</p>
+<p>Solo para iPhone Duo con iOS 27.1 o posterior. Al configurar ambas plantillas y sus opciones, las automatizaciones de Atajos pueden registrar plegados en segundo plano. Solo cuentan los eventos recibidos y guardados; no se garantiza un día completo sin omisiones.</p>
 </section>
-<section aria-labelledby="section-02"><h2 id="section-02">02 ¿Por qué no se contó una apertura parcial?</h2>
+<section aria-labelledby="section-02"><h2 id="section-02">02 ¿Cómo activo el conteo en segundo plano?</h2>
+<p>Abre el conteo automático desde Inicio o Ajustes y añade las plantillas locales FoldLogClosed y FoldLogOpened. Elige Atajos en el menú del sistema, revisa y confirma cada importación; no hace falta un enlace compartido de iCloud. En cada atajo, toca la flecha junto al activador de cierre o apertura y activa Automatización. Si lo necesitas, permite también ejecutarlo con el dispositivo bloqueado en Detalles → Privacidad. Los nombres y la disponibilidad dependen del sistema.</p>
+<p>La acción de cierre suma un plegado cuando la secuencia lo permite. La de apertura recibe un evento y permite contar el siguiente cierre; no suma directamente una apertura total ni parcial. Debes añadir y activar ambas. Los informes de cierre idénticos consecutivos no suman de nuevo.</p>
+<p>Las aperturas parciales y totales siguen dependiendo de entradas válidas de la bisagra que recibe la app. Una apertura parcial requiere un segundo continuo de observación tras pasar de cerrado. No se reconstruyen las parciales durante la suspensión o fuera de ejecución. La programación del sistema, permisos, interrupciones, retrasos o aperturas ausentes pueden causar omisiones o desajustes. No se garantiza ejecución con bloqueo, antes del inicio, tras cierre forzado ni cobertura diaria completa. No se reconstruyen eventos ausentes.</p>
+<p>Si no cuenta, comprueba ambas plantillas y sus opciones de automatización y ejecución con bloqueo. Los registros recientes del conteo automático muestran las horas de recepción. Volver a la app o confirmar el final no verifica la configuración. La acción también puede ejecutarse manualmente o con Siri; recibirla no prueba un plegado físico. Los widgets muestran estadísticas guardadas según el sistema.</p>
+</section>
+<section aria-labelledby="section-03"><h2 id="section-03">03 ¿Por qué no se contó una apertura parcial?</h2>
 <p>Tras pasar de cerrado a parcialmente abierto, mantén ese estado durante un segundo continuo de observación válida. Un paso breve no cuenta. Volver de totalmente abierto a parcialmente abierto no añade una apertura parcial. Abrir totalmente después de una apertura parcial confirmada añade un evento completo independiente.</p>
 <p>Cierre, apertura parcial y apertura completa son métricas independientes. Sumar las dos últimas no produce un total de aperturas con un criterio uniforme.</p>
 </section>
-<section aria-labelledby="section-03"><h2 id="section-03">03 ¿Cuándo se aplican los objetivos diarios?</h2>
+<section aria-labelledby="section-04"><h2 id="section-04">04 ¿Cuándo se aplican los objetivos diarios?</h2>
 <p>En Ajustes → Objetivos diarios, fija límites independientes para las tres métricas. El primero puede aplicarse hoy; los cambios posteriores suelen empezar mañana. Comprueba la fecha antes de guardar. Desactivar un objetivo tiene efecto inmediato.</p>
 <p>El conteo continúa más allá del límite y el saldo nunca baja de cero. Los objetivos ayudan con tus hábitos, pero no bloquean el dispositivo ni otras apps. Las cifras no indican pliegues de pantalla ni vida útil del hardware.</p>
 </section>
-<section aria-labelledby="section-04"><h2 id="section-04">04 ¿Por qué no se ha actualizado el widget?</h2>
+<section aria-labelledby="section-05"><h2 id="section-05">05 ¿Por qué no se ha actualizado el widget?</h2>
 <p>Los widgets muestran los plegados de hoy y el saldo guardados. El sistema programa las actualizaciones. No recogen movimientos por sí mismos ni reconstruyen eventos perdidos en segundo plano.</p>
 <p>Abre FoldLog para comprobar los datos y su estado. Si Ajustes indica un problema, vuelve a intentar la sincronización de widgets. Sin objetivo, el saldo aparece como «—».</p>
 </section>
-<section aria-labelledby="section-05"><h2 id="section-05">05 ¿Cómo exporto o borro datos?</h2>
+<section aria-labelledby="section-06"><h2 id="section-06">06 ¿Cómo exporto o borro datos?</h2>
 <p>En Ajustes → Datos puedes exportar JSON o borrar registros. El borrado restablece conteos, historial y objetivos dentro del alcance indicado en la confirmación. La apariencia y otras preferencias no se restablecen al mismo tiempo.</p>
 <p>El borrado no se puede deshacer en la app ni elimina copias ya exportadas o compartidas. No existe actualmente una función de restauración mediante importación JSON. Exporta y conserva tus archivos si deseas una copia.</p>
 <p>Eliminar un widget no borra registros. Que una copia de seguridad o un traslado conserve los archivos depende del sistema, sus ajustes y el proceso real.</p>
 </section>
-<section aria-labelledby="section-06"><h2 id="section-06">06 ¿Qué hago si el registro está pausado?</h2>
+<section aria-labelledby="section-07"><h2 id="section-07">07 ¿Qué hago si el registro está pausado?</h2>
 <p>Si no se pueden leer o guardar registros, comprueba el espacio libre y utiliza la opción de reintentar. Ante un fallo de lectura se conserva el archivo original y se pausa el registro.</p>
 <p>No elimines la app ni los datos solo para investigar un problema: podrías perder el historial que únicamente está en el dispositivo. Si continúa, escribe al correo indicado abajo.</p>
 </section>
-<section aria-labelledby="section-07"><h2 id="section-07">07 Contactar al desarrollador</h2>
+<section aria-labelledby="section-08"><h2 id="section-08">08 Contactar al desarrollador</h2>
 <p>Correo: <a href="mailto:chenwxiong@gmail.com">chenwxiong@gmail.com</a>. Proveedor: el desarrollador independiente de FoldLog.</p>
 <p>Indica las versiones de la app y de iOS, el modelo, la hora y los pasos para reproducir el problema. Oculta información personal ajena en las capturas. No necesitas enviar contraseñas ni el archivo completo de registros.</p>
 <p>Consulta las <a href="terms.html">Condiciones de uso</a> y la <a href="privacy.html">Política de privacidad</a>.</p>

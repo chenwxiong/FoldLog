@@ -41,42 +41,47 @@
       <p class="document-description">Supported devices, common questions, and contact details.</p>
 
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Updated</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Effective</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Updated</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Effective</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
-      <aside class="desktop-toc"><nav aria-label="On this page"><p class="toc-label">On this page</p><ol><li><a href="#section-01">01 Before you start</a></li><li><a href="#section-02">02 Why was a partial opening not counted?</a></li><li><a href="#section-03">03 How do daily goals take effect?</a></li><li><a href="#section-04">04 Why has my widget not updated?</a></li><li><a href="#section-05">05 How can I export or clear data?</a></li><li><a href="#section-06">06 What if recording is paused?</a></li><li><a href="#section-07">07 Contact the developer</a></li></ol><a class="back-top" href="#top">Back to top ↑</a></nav></aside>
+      <aside class="desktop-toc"><nav aria-label="On this page"><p class="toc-label">On this page</p><ol><li><a href="#section-01">01 Before you start</a></li><li><a href="#section-02">02 How do I enable background fold counting?</a></li><li><a href="#section-03">03 Why was a partial opening not counted?</a></li><li><a href="#section-04">04 How do daily goals take effect?</a></li><li><a href="#section-05">05 Why has my widget not updated?</a></li><li><a href="#section-06">06 How can I export or clear data?</a></li><li><a href="#section-07">07 What if recording is paused?</a></li><li><a href="#section-08">08 Contact the developer</a></li></ol><a class="back-top" href="#top">Back to top ↑</a></nav></aside>
       <div class="document-content">
-        <details class="mobile-toc"><summary>On this page <span aria-hidden="true">＋</span></summary><nav aria-label="On this page"><ol><li><a href="#section-01">01 Before you start</a></li><li><a href="#section-02">02 Why was a partial opening not counted?</a></li><li><a href="#section-03">03 How do daily goals take effect?</a></li><li><a href="#section-04">04 Why has my widget not updated?</a></li><li><a href="#section-05">05 How can I export or clear data?</a></li><li><a href="#section-06">06 What if recording is paused?</a></li><li><a href="#section-07">07 Contact the developer</a></li></ol></nav></details>
+        <details class="mobile-toc"><summary>On this page <span aria-hidden="true">＋</span></summary><nav aria-label="On this page"><ol><li><a href="#section-01">01 Before you start</a></li><li><a href="#section-02">02 How do I enable background fold counting?</a></li><li><a href="#section-03">03 Why was a partial opening not counted?</a></li><li><a href="#section-04">04 How do daily goals take effect?</a></li><li><a href="#section-05">05 Why has my widget not updated?</a></li><li><a href="#section-06">06 How can I export or clear data?</a></li><li><a href="#section-07">07 What if recording is paused?</a></li><li><a href="#section-08">08 Contact the developer</a></li></ol></nav></details>
         <article aria-label="Help &amp; Support"><p>Notice your habits. Make time for yourself. Find FoldLog’s supported devices, data controls, and ways to get help here.</p>
 <section aria-labelledby="section-01"><h2 id="section-01">01 Before you start</h2>
-<p>FoldLog currently supports only iPhone Duo running iOS 27.1 or later. A compatibility notice on another iPhone does not mean it can record actual folding movements.</p>
-<p>Records reflect valid events the app actually receives and successfully saves, including background callbacks when available. Suspension, Lock Screen use, or missing input may leave gaps. Movements while the app is not running are not reconstructed, and complete day-long coverage is not guaranteed. The first state after observation resumes only establishes a baseline.</p>
+<p>Only for iPhone Duo with iOS 27.1 or later. After setting up both presets and their run options, Shortcuts automations can record folds while FoldLog is in the background. Only events actually received and saved count; complete all-day coverage is not guaranteed.</p>
 </section>
-<section aria-labelledby="section-02"><h2 id="section-02">02 Why was a partial opening not counted?</h2>
+<section aria-labelledby="section-02"><h2 id="section-02">02 How do I enable background fold counting?</h2>
+<p>Open automatic counting from Home or Settings and add both bundled local presets: FoldLogClosed and FoldLogOpened. Choose Shortcuts in the system menu, review and confirm each import; no iCloud sharing link is needed. In each shortcut, tap the arrow beside the close or open trigger and turn on Automation. For locked-device use, also allow running while locked under Details → Privacy. Labels and availability depend on the installed system.</p>
+<p>The close action adds a fold when the transition sequence permits it. The open action receives an opening event and allows the next close to count; it does not directly add a fully open or half-open count. Add and enable both presets. Consecutive duplicate close reports do not add extra counts.</p>
+<p>Half-open and fully open counts still depend on valid hinge input actually received by the app. A half-open event requires one continuous second of observation after moving from closed; half openings during suspension or while the app is not running are not reconstructed. System scheduling, permissions, interruptions, delayed actions or missing opening events may cause gaps or mismatches. Execution while locked, before launch, after force quit, and complete all-day coverage are not guaranteed. Missing events are not reconstructed.</p>
+<p>If background counting stops, check that both presets are added and their Automation and run-while-locked options are enabled. Expand Recent records on the automatic-counting page to see received action times. Returning to FoldLog or confirming completion does not verify system settings. An action can also run manually or through Siri, so a receipt alone does not prove a physical fold. Widgets still show saved statistics on the system’s schedule.</p>
+</section>
+<section aria-labelledby="section-03"><h2 id="section-03">03 Why was a partial opening not counted?</h2>
 <p>After moving from closed to partially open, remain there for one continuous second of valid observation. Passing briefly through this state does not count. Returning from fully open to partially open adds no partial opening. Fully opening after a confirmed partial opening adds a separate fully open event.</p>
 <p>Closed, partially open, and fully open counts are stored separately. Do not add partial and full openings together as a single consistent opening total.</p>
 </section>
-<section aria-labelledby="section-03"><h2 id="section-03">03 How do daily goals take effect?</h2>
+<section aria-labelledby="section-04"><h2 id="section-04">04 How do daily goals take effect?</h2>
 <p>In Settings → Daily Goals, set independent limits for closed, partially open, and fully open movements. An initial goal may apply today; later changes normally default to tomorrow. Check the effective date before saving. Disabling a goal takes effect immediately.</p>
 <p>Counting continues beyond the limit, and the remaining allowance never falls below zero. Goals help you manage habits; they do not lock the device or restrict other apps. Counts do not indicate creases or hardware life.</p>
 </section>
-<section aria-labelledby="section-04"><h2 id="section-04">04 Why has my widget not updated?</h2>
+<section aria-labelledby="section-05"><h2 id="section-05">05 Why has my widget not updated?</h2>
 <p>Widgets show saved folds today and the remaining allowance. The system schedules updates. Widgets do not collect movements independently or reconstruct missed background events.</p>
 <p>Open FoldLog to check records and recording status. If Settings reports a synchronization issue, use Retry Widget Sync. With no goal set, the remaining allowance appears as “—”.</p>
 </section>
-<section aria-labelledby="section-05"><h2 id="section-05">05 How can I export or clear data?</h2>
+<section aria-labelledby="section-06"><h2 id="section-06">06 How can I export or clear data?</h2>
 <p>Under Settings → Data, export JSON records or clear them. Clearing resets counts, history, and goals within the scope shown in the confirmation. Appearance and other preferences are not reset together with records.</p>
 <p>Clearing cannot be undone in the app and does not delete copies already exported or shared. The current version has no JSON import for restoration. Export and keep files yourself if you want a copy.</p>
 <p>Removing a widget does not clear records. Whether backups or device transfers retain files depends on your system settings and the actual transfer process.</p>
 </section>
-<section aria-labelledby="section-06"><h2 id="section-06">06 What if recording is paused?</h2>
+<section aria-labelledby="section-07"><h2 id="section-07">07 What if recording is paused?</h2>
 <p>If the app cannot read or save records, check available storage and use its retry action. When reading fails, the app preserves the original file and pauses recording.</p>
 <p>Do not delete the app or clear records merely to troubleshoot, as this may lose history stored only on your device. If the issue continues, contact us below.</p>
 </section>
-<section aria-labelledby="section-07"><h2 id="section-07">07 Contact the developer</h2>
+<section aria-labelledby="section-08"><h2 id="section-08">08 Contact the developer</h2>
 <p>Email: <a href="mailto:chenwxiong@gmail.com">chenwxiong@gmail.com</a>. Provider: the individual developer of FoldLog.</p>
 <p>Include the app version, iOS version, device model, time of the issue, and steps to reproduce it. Conceal unrelated personal information in screenshots. You do not need to send passwords or your complete record archive.</p>
 <p>Read the <a href="terms.html">User Agreement</a> and <a href="privacy.html">Privacy Policy</a> for use and data-handling details.</p>

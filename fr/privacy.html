@@ -41,9 +41,9 @@
       <p class="document-description">Traitement des données locales, des partages et des visites du site.</p>
       <p class="translation-note">Cette page est une traduction de référence de l’original en chinois simplifié. <a href="../privacy.html" lang="zh-Hans">Original chinois</a></p>
       <dl class="metadata">
-        <div><dt>Version</dt><dd>1.0</dd></div>
-        <div><dt>Mise à jour</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>Entrée en vigueur</dt><dd>2026-10-27</dd></div>
+        <div><dt>Version</dt><dd>1.1</dd></div>
+        <div><dt>Mise à jour</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>Entrée en vigueur</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
@@ -64,9 +64,12 @@
 <tr><td>Préférences</td><td>Apparence</td><td>Mémoriser vos choix d’affichage</td></tr>
 <tr><td>Compatibilité et état actuel</td><td>Identifiant du modèle, version système, catégorie d’appareil, état de charnière fourni par le système, horloge monotone pour de courts intervalles</td><td>Vérification locale, détection des changements, confirmation d’une seconde continue d’ouverture partielle</td></tr>
 <tr><td>Résumé des widgets</td><td>Date et fuseau statistiques, pliages du jour, objectif, heure de mise à jour et indicateurs d’état nécessaires</td><td>Afficher les pliages du jour et le solde sur le même appareil</td></tr>
+<tr><td>Raccourcis et configuration locale</td><td>Source, action de fermeture/ouverture, heure et résultat, identifiant aléatoire de réception et événement lié, limite de dédoublonnage, fin du guide et page de retour</td><td>Compter localement, éviter les fermetures identiques consécutives, afficher les réceptions et reprendre la configuration</td></tr>
 </tbody></table></div>
 <p>Les identifiants aléatoires distinguent les entrées locales. Ce ne sont pas des identifiants publicitaires et ils ne servent ni à vous identifier ni à vous suivre. L’identifiant du modèle décrit un modèle, pas un numéro de série.</p>
-<p>L’état et le chronométrage servent à l’observation et au calcul. L’app ne conserve pas de séquences brutes d’angles de charnière ni de valeurs brutes de l’horloge monotone dans les exports. Elle enregistre les événements valides réellement reçus et sauvegardés, y compris les notifications en arrière-plan si possible. Des interruptions peuvent créer des lacunes ; ces relevés ne reconstituent pas toute l’activité quotidienne.</p>
+<p>L’état et le chronométrage servent à l’observation et au calcul. L’app ne conserve pas de séquences brutes d’angles de charnière ni de valeurs brutes de l’horloge monotone dans les exports.</p>
+<p>Uniquement pour iPhone Duo sous iOS 27.1 ou ultérieur. Une fois les deux modèles et leurs options configurés, les automatisations Raccourcis peuvent compter les pliages en arrière-plan. Seuls les événements reçus et enregistrés comptent ; une journée sans lacune n’est pas garantie. Les semi-ouvertures et ouvertures complètes reposent toujours sur les données valides de charnière réellement reçues par l’app. Une semi-ouverture exige une seconde continue d’observation après l’état fermé. Celles survenues pendant une suspension ou hors exécution ne sont pas reconstituées. Planification système, permissions, interruptions, retards ou événements d’ouverture manquants peuvent entraîner des lacunes ou erreurs. L’exécution verrouillée, avant lancement, après fermeture forcée et la couverture complète ne sont pas garanties. Les événements manquants ne sont pas reconstitués.</p>
+<p>Les actions utilisent la même archive locale que l’app, sans envoi au serveur du développeur. Le journal conserve au plus 256 réceptions ; retirer les plus anciennes ne supprime pas les événements comptés. Il peut inclure des appels manuels ou Siri. Les exports JSON peuvent contenir les sources, réceptions, états de dédoublonnage et du guide. L’effacement retire aussi réceptions et dédoublonnage, conserve les préférences d’apparence et du guide, et ne désactive pas les automatisations système.</p>
 </section>
 <section aria-labelledby="section-03"><h2 id="section-03">03 Stockage et utilisation</h2>
 <p>Les archives résident dans le stockage local de l’app ; les préférences utilisent le stockage de réglages du système.</p>
@@ -78,6 +81,7 @@
 <p>L’app ne demande pas l’accès à la localisation, aux contacts, aux photos, à la caméra ou au microphone. La charnière, la compatibilité et les widgets utilisent les capacités du système.</p>
 <p>Lors des téléchargements, mises à jour ou tests TestFlight, Apple peut traiter achats, distribution, diagnostics de plantage et informations de test selon vos réglages et ses politiques. Vos retours volontaires et les données diagnostiques ou agrégées qu’Apple fournit aux développeurs peuvent servir à résoudre des problèmes et à maintenir l’app. Le périmètre dépend des services, réglages et politiques Apple, sans signifier qu’un SDK d’analyse tiers est intégré.</p>
 <p>Consultez la <a href="https://www.apple.com/legal/privacy/" rel="noreferrer">Politique de confidentialité d’Apple</a>.</p>
+<p>Les deux modèles signés sont des fichiers locaux fournis avec l’app, sans lien iCloud requis. Vous confirmez importation, exécution automatique et verrouillée dans Raccourcis. FoldLog ne peut ni modifier ni lire les interrupteurs système. Vous pouvez les désactiver ou supprimer dans Raccourcis ; les règles Apple s’appliquent au traitement système.</p>
 </section>
 <section aria-labelledby="section-05"><h2 id="section-05">05 Export et partage</h2>
 <p>Dans Réglages → Données, vous pouvez exporter du JSON contenant types et horaires des événements, identifiants aléatoires, objectifs et dates d’effet, date de création et fuseau de l’archive.</p>

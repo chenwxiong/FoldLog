@@ -41,42 +41,47 @@
       <p class="document-description">使用範圍、常見問題與聯絡方式。</p>
 
       <dl class="metadata">
-        <div><dt>版本</dt><dd>1.0</dd></div>
-        <div><dt>更新日期</dt><dd><time datetime="2026-10-27">2026-10-27</time></dd></div>
-        <div><dt>生效日期</dt><dd>2026-10-27</dd></div>
+        <div><dt>版本</dt><dd>1.1</dd></div>
+        <div><dt>更新日期</dt><dd><time datetime="2026-10-30">2026-10-30</time></dd></div>
+        <div><dt>生效日期</dt><dd>2026-10-30</dd></div>
       </dl>
     </div>
     <div class="document-layout">
-      <aside class="desktop-toc"><nav aria-label="本頁目錄"><p class="toc-label">本頁目錄</p><ol><li><a href="#section-01">01 使用前先確認</a></li><li><a href="#section-02">02 半開為什麼沒有計數</a></li><li><a href="#section-03">03 每日目標如何生效</a></li><li><a href="#section-04">04 小工具為何沒有立即更新</a></li><li><a href="#section-05">05 如何匯出或清空資料</a></li><li><a href="#section-06">06 提示紀錄已暫停怎麼辦</a></li><li><a href="#section-07">07 聯絡開發者</a></li></ol><a class="back-top" href="#top">回到頂部 ↑</a></nav></aside>
+      <aside class="desktop-toc"><nav aria-label="本頁目錄"><p class="toc-label">本頁目錄</p><ol><li><a href="#section-01">01 使用前先確認</a></li><li><a href="#section-02">02 如何開啟背景折疊計數</a></li><li><a href="#section-03">03 半開為什麼沒有計數</a></li><li><a href="#section-04">04 每日目標如何生效</a></li><li><a href="#section-05">05 小工具為何沒有立即更新</a></li><li><a href="#section-06">06 如何匯出或清空資料</a></li><li><a href="#section-07">07 提示紀錄已暫停怎麼辦</a></li><li><a href="#section-08">08 聯絡開發者</a></li></ol><a class="back-top" href="#top">回到頂部 ↑</a></nav></aside>
       <div class="document-content">
-        <details class="mobile-toc"><summary>本頁目錄 <span aria-hidden="true">＋</span></summary><nav aria-label="本頁目錄"><ol><li><a href="#section-01">01 使用前先確認</a></li><li><a href="#section-02">02 半開為什麼沒有計數</a></li><li><a href="#section-03">03 每日目標如何生效</a></li><li><a href="#section-04">04 小工具為何沒有立即更新</a></li><li><a href="#section-05">05 如何匯出或清空資料</a></li><li><a href="#section-06">06 提示紀錄已暫停怎麼辦</a></li><li><a href="#section-07">07 聯絡開發者</a></li></ol></nav></details>
+        <details class="mobile-toc"><summary>本頁目錄 <span aria-hidden="true">＋</span></summary><nav aria-label="本頁目錄"><ol><li><a href="#section-01">01 使用前先確認</a></li><li><a href="#section-02">02 如何開啟背景折疊計數</a></li><li><a href="#section-03">03 半開為什麼沒有計數</a></li><li><a href="#section-04">04 每日目標如何生效</a></li><li><a href="#section-05">05 小工具為何沒有立即更新</a></li><li><a href="#section-06">06 如何匯出或清空資料</a></li><li><a href="#section-07">07 提示紀錄已暫停怎麼辦</a></li><li><a href="#section-08">08 聯絡開發者</a></li></ol></nav></details>
         <article aria-label="幫助與支援"><p>把習慣記下來，把時間留給自己。這裡整理了折記的使用範圍、資料管理方式，以及遇到問題時的聯絡方法。</p>
 <section aria-labelledby="section-01"><h2 id="section-01">01 使用前先確認</h2>
-<p>折記當前僅支援 iPhone Duo，要求 iOS 27.1 或更新版本。其他 iPhone 上的兼容提示不表示可進行真實開合紀錄。</p>
-<p>折記以 App 實際收到並成功保存的有效開合事件為準，也會盡力紀錄背景有效回呼。系統掛起、鎖定畫面或輸入中斷期間可能漏記；App 未運行期間的動作不會補記，不保證全天完整紀錄。恢復觀測後的首次狀態只建立基線，不會補造缺失紀錄。</p>
+<p>僅支援 iPhone Duo，需 iOS 27.1 或更新版本。設定兩份預設與執行選項後，可透過捷徑自動化，在折記位於背景時記錄折疊次數。以實際收到並成功儲存的事件為準，不保證全天無遺漏。</p>
 </section>
-<section aria-labelledby="section-02"><h2 id="section-02">02 半開為什麼沒有計數</h2>
+<section aria-labelledby="section-02"><h2 id="section-02">02 如何開啟背景折疊計數</h2>
+<p>從首頁「設定自動計數」或設定中的「自動計數」進入，分別加入 App 隨附的本機預設 FoldLogClosed（合上）與 FoldLogOpened（打開）。在系統選單選擇「捷徑」，檢視並確認加入，無需 iCloud 分享連結。接著在每份捷徑點觸發條件旁的箭頭，開啟「自動化」；需要鎖定時執行時，再於「詳細資訊 → 隱私權」允許鎖定時執行。名稱與可用性以目前系統為準。</p>
+<p>合上動作在符合轉換順序時增加折疊次數；打開動作接收展開事件，讓下一次合上能繼續計數，不直接增加全開或半開次數。兩份都要加入並啟用，連續重複的合上回報不會額外計數。</p>
+<p>半開與全開仍依 App 實際收到的有效開合輸入記錄；半開需從合上進入並連續感知滿 1 秒。暫停或未執行期間的半開不補記。系統排程、執行權限、輸入中斷、延遲或缺少打開事件可能漏記或錯配；不保證鎖定、未啟動、強制結束或全天完整記錄，也不重建缺失事件。</p>
+<p>背景未計數時，先確認兩份預設都已加入，並各自開啟自動化與鎖定時執行。在自動計數頁展開「最近紀錄」可看接收時間；返回 App 或確認完成不代表系統設定生效，收到動作也不證明一定由實際開合觸發（手動或 Siri 也可執行）。小工具仍只顯示已儲存統計，由系統安排更新。</p>
+</section>
+<section aria-labelledby="section-03"><h2 id="section-03">03 半開為什麼沒有計數</h2>
 <p>從合攏進入半開後，需要在連續有效觀測中保持滿 1 秒。短暫經過半開不會計入；從全開退回半開也不會增加半開次數。半開確認後再全開，兩類分別各計一次。</p>
 <p>三類次數獨立保存，請分別查看折疊、半開和全開，不要將半開與全開直接相加當成展開總次數。</p>
 </section>
-<section aria-labelledby="section-03"><h2 id="section-03">03 每日目標如何生效</h2>
+<section aria-labelledby="section-04"><h2 id="section-04">04 每日目標如何生效</h2>
 <p>在「設定 → 每日目標」中，分別設定折疊、半開和全開的上限。首次設定可當天生效，後續修改通常預設次日生效；保存前可查看界面上的生效時間。關閉目標立即生效。</p>
 <p>達到目標上限仍會繼續計數，剩餘次數最低顯示為 0。目標用於主動管理習慣，不會鎖住裝置或限制其他 App。次數不能表示折痕程度或硬件壽命。</p>
 </section>
-<section aria-labelledby="section-04"><h2 id="section-04">04 小工具為何沒有立即更新</h2>
+<section aria-labelledby="section-05"><h2 id="section-05">05 小工具為何沒有立即更新</h2>
 <p>小工具展示 App 已保存的今日折疊和剩餘次數，刷新由系統安排。它不會獨立採集開合，因此不能依靠小工具補記背景動作。</p>
 <p>可以打開折記確認資料和紀錄狀態；若設定頁提示同步異常，可使用「重試同步小工具」。未設定目標時，剩餘次數顯示為「—」。</p>
 </section>
-<section aria-labelledby="section-05"><h2 id="section-05">05 如何匯出或清空資料</h2>
+<section aria-labelledby="section-06"><h2 id="section-06">06 如何匯出或清空資料</h2>
 <p>在「設定 → 資料」中可以匯出 JSON 紀錄，也可以清空紀錄。清空操作會按照確認提示列明的範圍重置次數、歷史和目標，外觀等偏好不會一並重置。</p>
 <p>清空無法在 App 內撤銷，已匯出或分享的副本也不會自動刪除。當前沒有 JSON 匯入恢復功能；如需保留紀錄，請先匯出並自行妥善管理文件。</p>
 <p>移除小工具不會清空紀錄。系統備份或裝置遷移是否保留文件，取決於你的系統設定與實際處理方式。</p>
 </section>
-<section aria-labelledby="section-06"><h2 id="section-06">06 提示紀錄已暫停怎麼辦</h2>
+<section aria-labelledby="section-07"><h2 id="section-07">07 提示紀錄已暫停怎麼辦</h2>
 <p>若 App 提示無法讀取紀錄或保存失敗，請先確認裝置儲存空間，並按 App 提供的重試入口操作。遇到讀取問題時，App 會保留原文件並暫停紀錄。</p>
 <p>不要為排查問題直接刪除 App 或清空紀錄，以免丟失僅保存在本地的歷史。問題持續時，可以透過下方郵箱聯絡我們。</p>
 </section>
-<section aria-labelledby="section-07"><h2 id="section-07">07 聯絡開發者</h2>
+<section aria-labelledby="section-08"><h2 id="section-08">08 聯絡開發者</h2>
 <p>聯絡郵箱：<a href="mailto:chenwxiong@gmail.com">chenwxiong@gmail.com</a>。提供方：折記 / FoldLog 個人開發者。</p>
 <p>描述問題時，建議附上 App 版本、iOS 版本、裝置型號、發生時間和復現步驟。截圖請遮蓋無關個人資訊；無需主動提供密碼或完整的紀錄檔案。</p>
 <p>關於使用規則和資料處理，可繼續閱讀 <a href="terms.html">使用者協議</a> 與 <a href="privacy.html">隱私權政策</a>。</p>
